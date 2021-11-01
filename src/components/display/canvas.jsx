@@ -4,7 +4,7 @@ import useWindowSize from "./windowSize";
 
 import useCanvas from "./useCanvas";
 
-import MakeGradient from "./GradientFactory";
+import { createBlinking, createGradient } from "./GradientFactory";
 
 const useStyles = makeStyles((theme) => ({
     canvas: {
@@ -12,19 +12,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-let lala = 0;
-
 const canvasUpdate = (context, frameCount, config) => {
     const canvas = context.canvas;
-    //context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = "black";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    // if (config && config.image != null) {
-    //     context.drawImage(config.image, 0, 0);
-    // }
+    if (config.mode === "gradient") {
+        if (config.gradient.mode === "gradient") {
+            context.fillStyle = createGradient(context, config.gradient.rotation, config.gradient.colors, frameCount);
+        }
 
-    context.fillStyle = MakeGradient(context, 0, ["red", "green"], frameCount);
+        if (config.gradient.mode === "blinking") {
+            context.fillStyle = createBlinking(context, config.gradient.rotation, config.gradient.colors, frameCount);
+        }
+    }
 
     context.fillRect(0, 0, canvas.width, canvas.height);
 

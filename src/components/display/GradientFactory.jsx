@@ -1,4 +1,4 @@
-const MakeGradient = (context, rotation, colors, frameCount) => {
+const MakeGradient = (context, rotation, colors, frameCount, mode = "gradient") => {
     let canvas = context.canvas;
 
     //circumscribed circle around canvas rectangle
@@ -7,8 +7,14 @@ const MakeGradient = (context, rotation, colors, frameCount) => {
     //how much space one color takes up
     let colorStopWidth = (realRadius * 2) / colors.length;
 
-    //increase circumscribed circle's radius by 2 color stops
-    let radius = realRadius + 2 * colorStopWidth;
+    let radius = 0;
+    if (mode === "blinking") {
+        // set circumscribed circle's radius to a color stop
+        radius = realRadius * colorStopWidth;
+    } else if (mode === "gradient") {
+        //increase circumscribed circle's radius by a color stop
+        radius = realRadius + colorStopWidth;
+    }
 
     //calculate location of points on a circle based on rotation
     let x1 = Math.cos(rotation) * radius + canvas.width / 2;
@@ -18,18 +24,23 @@ const MakeGradient = (context, rotation, colors, frameCount) => {
 
     let speed = frameCount / 100;
 
-    //add colors in front and back to make seamless transition
-    let firstColor = colors[0];
-    let lastColor = colors[colors.length - 1];
-    colors.unshift(lastColor);
-    colors.push(firstColor);
+    //add first color to the end to make seamless transition
+    let palette = [...colors, colors[0]];
 
     let gradient = context.createLinearGradient(x1, y1, x2, y2);
-    for (let i = 0; i < colors.length; i++) {
-        let coloroffset = ((i + speed) % colors.length) / colors.length;
-        gradient.addColorStop(coloroffset, colors[i]);
+    for (let i = 0; i < palette.length; i++) {
+        let coloroffset = ((i + speed) % palette.length) / palette.length;
+        gradient.addColorStop(coloroffset, palette[i]);
     }
     return gradient;
 };
 
-export default MakeGradient;
+const createGradient = (context, rotation, colors, frameCount) => {
+    return MakeGradient(context, rotation, colors, frameCount, "gradient");
+};
+
+const createBlinking = (context, rotation, colors, frameCount) => {
+    return MakeGradient(context, rotation, colors, frameCount, "blinking");
+};
+
+export { createGradient, createBlinking };
