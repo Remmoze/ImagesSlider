@@ -8,8 +8,13 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         top: 10,
         left: 5,
-        width: 150,
-        height: 400,
+        width: "100%",
+        height: "100%",
+
+        maxWidth: 350,
+        maxHeight: 500,
+
+        backgroundColor: "#000000a0",
     },
 }));
 
