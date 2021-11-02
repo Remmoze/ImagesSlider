@@ -9,6 +9,7 @@ const configSlice = createSlice({
         mode: "gradient",
         gradient: {
             mode: "gradient", //blinking
+            speed: 100,
             rotation: (Math.PI * 5) / 8, //radians
             colors: [
                 "#FF0000", // Red
@@ -32,9 +33,15 @@ const configSlice = createSlice({
         setGradientMode: (state, { payload }) => {
             state.gradient.mode = payload;
         },
+        setGradientSpeed: (state, { payload }) => {
+            state.gradient.speed = payload;
+        },
+        setGradientRotation: (state, { payload }) => {
+            state.gradient.rotation = payload;
+        },
     },
 });
 
-export const { setImage } = configSlice.actions;
+export const { setImage, setGradientSpeed, setGradientRotation } = configSlice.actions;
 
 export default configSlice.reducer;

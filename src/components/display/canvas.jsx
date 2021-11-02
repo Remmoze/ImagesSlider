@@ -18,11 +18,11 @@ const canvasUpdate = (context, frameCount, config) => {
 
     if (config.mode === "gradient") {
         if (config.gradient.mode === "gradient") {
-            context.fillStyle = createGradient(context, config.gradient.rotation, config.gradient.colors, frameCount);
+            context.fillStyle = createGradient(context, config, frameCount);
         }
 
         if (config.gradient.mode === "blinking") {
-            context.fillStyle = createBlinking(context, config.gradient.rotation, config.gradient.colors, frameCount);
+            context.fillStyle = createBlinking(context, config, frameCount);
         }
     }
 
