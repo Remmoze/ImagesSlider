@@ -8,8 +8,8 @@ const configSlice = createSlice({
     initialState: {
         mode: "gradient",
         gradient: {
-            mode: "blinking", //blinking
-            rotation: 0, //radians
+            mode: "gradient", //blinking
+            rotation: (Math.PI * 5) / 8, //radians
             colors: [
                 "#FF0000", // Red
                 "#FF7F00", // Orange

@@ -1,16 +1,15 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import useWindowSize from "./windowSize";
 
 import useCanvas from "./useCanvas";
 
 import { createBlinking, createGradient } from "./GradientFactory";
 
-const useStyles = makeStyles((theme) => ({
-    canvas: {
-        display: "block",
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     canvas: {
+//         display: "block",
+//     },
+// }));
 
 const canvasUpdate = (context, frameCount, config) => {
     const canvas = context.canvas;
@@ -36,12 +35,11 @@ const canvasUpdate = (context, frameCount, config) => {
 };
 
 const Canvas = (args) => {
-    const { canvasStyle } = useStyles();
     args = { ...args, ...useWindowSize() };
 
     const canvasRef = useCanvas(canvasUpdate);
 
-    return <canvas className={canvasStyle} ref={canvasRef} {...args} />;
+    return <canvas ref={canvasRef} {...args} />;
 };
 
 export default Canvas;

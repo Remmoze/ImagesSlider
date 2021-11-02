@@ -1,17 +1,14 @@
 import React from "react";
-import { styled } from "@mui/system";
 
+import SettingsOverlay from "./settings/SettingsOverlay";
 import Display from "./display/Display";
-import SettingsContainer from "./settings/SettingsContainer";
-
-const SettingsContainerOverlay = styled(SettingsContainer)({ position: "absolute" });
 
 const MainContainer = () => {
     return (
-        <React.Fragment>
-            <SettingsContainerOverlay />
+        <>
+            <SettingsOverlay />
             <Display />
-        </React.Fragment>
+        </>
     );
 };
 
