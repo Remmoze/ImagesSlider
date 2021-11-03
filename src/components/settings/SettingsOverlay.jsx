@@ -10,9 +10,7 @@ const SettingsOverlay = () => {
                 top: 7,
                 left: 7,
                 width: "100%",
-                height: "100%",
                 maxWidth: 350,
-                maxHeight: 500,
                 backgroundColor: "#000000a0",
                 borderRadius: 3,
             }}
