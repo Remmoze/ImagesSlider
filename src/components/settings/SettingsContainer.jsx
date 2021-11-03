@@ -9,8 +9,10 @@ const SettingsContainer = () => {
     //const dispatch = useDispatch();
     return (
         <Grid container spacing={2} sx={{ padding: 2 }}>
-            <Grid container justifyContent="center" item xs={12}>
-                <Typography variant="h5">Settings</Typography>
+            <Grid container justifyContent="center" item mb={-1}>
+                <Typography gutterBottom variant="h5">
+                    Settings
+                </Typography>
             </Grid>
 
             <Grid container direction="column" item>

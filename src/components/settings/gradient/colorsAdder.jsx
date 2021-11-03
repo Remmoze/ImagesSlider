@@ -2,53 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
 
-import { Grid, IconButton, Typography } from "@mui/material";
-import { List, ListItem, ListItemText, Divider } from "@mui/material";
-import { Box } from "@mui/system";
+import { Grid, IconButton } from "@mui/material";
+import { List, Divider } from "@mui/material";
 
-import { deleteGradientColorByIndex } from "../../../redux/configSlice";
-
-const generateColorsList = (config, dispatch) => {
-    return (
-        <>
-            {config.gradient.colors.map((color, index) => (
-                <>
-                    {index !== 0 && <Divider />}
-                    <ListItem disablePadding>
-                        <Box
-                            ml={1}
-                            sx={{
-                                width: 70,
-                                height: 25,
-                                backgroundColor: color,
-                                border: 2,
-                                borderColor: "#aaaaaa",
-                                borderRadius: 2,
-                                "&:hover": {
-                                    backgroundColor: color,
-                                    opacity: [0.9, 0.8, 0.7],
-                                },
-                            }}
-                        />
-
-                        <ListItemText>
-                            <Typography ml={1}>{color}</Typography>
-                        </ListItemText>
-                        <IconButton
-                            onClick={() => {
-                                dispatch(deleteGradientColorByIndex(index));
-                            }}
-                        >
-                            <DeleteIcon />
-                        </IconButton>
-                    </ListItem>
-                </>
-            ))}
-        </>
-    );
-};
+import { addGradientColor } from "../../../redux/configSlice";
+import ColorItem from "./colorItem";
 
 const ColorsList = () => {
     const config = useSelector((storage) => storage.config);
@@ -59,13 +18,18 @@ const ColorsList = () => {
             <Grid container direction="row" alignItems="center">
                 <Grid item>Colors</Grid>
                 <Grid item>
-                    <IconButton>
+                    <IconButton onClick={() => dispatch(addGradientColor("black"))}>
                         <AddIcon />
                     </IconButton>
                 </Grid>
             </Grid>
             <List sx={{ width: "100%", bgcolor: "#00000050", borderRadius: 3 }}>
-                {generateColorsList(config, dispatch)}
+                {config.gradient.colors.map((color, index) => (
+                    <>
+                        {index !== 0 && <Divider />}
+                        <ColorItem color={color} index={index}></ColorItem>
+                    </>
+                ))}
             </List>
         </Grid>
     );
