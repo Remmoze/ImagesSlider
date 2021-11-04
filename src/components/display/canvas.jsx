@@ -28,10 +28,23 @@ const canvasUpdate = (context, frameCount, config) => {
 
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.fillStyle = "white";
-    context.beginPath();
-    context.arc(canvas.width / 2, canvas.height / 2, 100 * Math.sin(frameCount * 0.05) ** 2 + 10, 0, 2 * Math.PI);
-    context.fill();
+    if (config.debug) {
+        var grd = context.createRadialGradient(
+            canvas.width / 2,
+            canvas.height / 2,
+            0,
+            canvas.width / 2,
+            canvas.height / 2,
+            120
+        );
+        grd.addColorStop(0, "#ffffff50");
+        grd.addColorStop(1, "#ffffffa0");
+
+        context.fillStyle = grd;
+        context.beginPath();
+        context.arc(canvas.width / 2, canvas.height / 2, 100 * Math.sin(frameCount * 0.05) ** 2, 0, 2 * Math.PI);
+        context.fill();
+    }
 };
 
 const Canvas = (args) => {

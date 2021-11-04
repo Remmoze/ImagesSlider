@@ -6,6 +6,7 @@ import Lines from "../content/lines.jpg";
 const configSlice = createSlice({
     name: "config",
     initialState: {
+        debug: false,
         mode: "gradient",
         gradient: {
             mode: "blinking", //blinking
