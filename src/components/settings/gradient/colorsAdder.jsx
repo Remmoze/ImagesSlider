@@ -27,7 +27,7 @@ const ColorsList = () => {
                 {config.colors.map((color, index) => (
                     <div key={color + index}>
                         {index !== 0 && <Divider />}
-                        <ColorItem color={color} index={index}></ColorItem>
+                        <ColorItem blockDelete={config.colors.length < 2} color={color} index={index}></ColorItem>
                     </div>
                 ))}
             </List>

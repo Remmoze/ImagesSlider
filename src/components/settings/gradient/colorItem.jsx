@@ -24,7 +24,7 @@ const changeColor = (dispatch, index, color, setError) => {
     dispatch(setColorByIndex({ index, color }));
 };
 
-const ColorItem = ({ color, index }) => {
+const ColorItem = ({ color, index, blockDelete }) => {
     const [error, setError] = useState(false);
     const dispatch = useDispatch();
 
@@ -57,6 +57,7 @@ const ColorItem = ({ color, index }) => {
                 />
             </ListItemText>
             <IconButton
+                disabled={blockDelete}
                 onClick={() => {
                     dispatch(deleteColorByIndex(index));
                 }}
