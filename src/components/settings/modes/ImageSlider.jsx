@@ -5,7 +5,11 @@ import Rotation from "../common/rotation";
 const ImageSlider = {
     name: "image",
     displayName: "Image",
-    children: [<Speed />, <Rotation />, <FileUploader />],
+    children: [
+        <Speed key={"ImageSpeed"} />,
+        <Rotation key={"ImageRotation"} />,
+        <FileUploader key={"ImageFileUploader"} />,
+    ],
 };
 
 export default ImageSlider;

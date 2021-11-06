@@ -5,7 +5,11 @@ import ColorsList from "../gradient/colorsAdder";
 const Gradient = {
     name: "gradient",
     displayName: "Gradient",
-    children: [<Speed />, <Rotation />, <ColorsList />],
+    children: [
+        <Speed key={"GradientSpeed"} />,
+        <Rotation key={"GradientRotation"} />,
+        <ColorsList key={"GradientColorsList"} />,
+    ],
 };
 
 export default Gradient;

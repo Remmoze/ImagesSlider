@@ -25,10 +25,10 @@ const ColorsList = () => {
             </Grid>
             <List sx={{ width: "100%", bgcolor: "#00000050", borderRadius: 3 }}>
                 {config.colors.map((color, index) => (
-                    <>
+                    <div key={color + index}>
                         {index !== 0 && <Divider />}
                         <ColorItem color={color} index={index}></ColorItem>
-                    </>
+                    </div>
                 ))}
             </List>
         </Grid>

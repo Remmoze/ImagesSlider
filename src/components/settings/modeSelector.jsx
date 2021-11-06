@@ -23,7 +23,9 @@ const Mode = () => {
                     <InputLabel>Display mode</InputLabel>
                     <Select value={config.mode} label="Display mode" onChange={changeMode}>
                         {modes.map((mode) => (
-                            <MenuItem value={mode.name}>{mode.displayName}</MenuItem>
+                            <MenuItem key={mode.name} value={mode.name}>
+                                {mode.displayName}
+                            </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
