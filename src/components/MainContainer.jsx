@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { AnimatedSettingsOverlay } from "./settings/SettingsOverlay";
 import Display from "./display/Display";
-import { Checkbox, Slide } from "@mui/material";
+import { Checkbox } from "@mui/material";
 
 const MainContainer = () => {
     const [checked, setCheck] = useState(true);
@@ -18,7 +18,6 @@ const MainContainer = () => {
                 onChange={({ target }) => setCheck(target.checked)}
             />
             <AnimatedSettingsOverlay active={checked} />
-            {/* <SettingsOverlay /> */}
             <Display />
         </div>
     );

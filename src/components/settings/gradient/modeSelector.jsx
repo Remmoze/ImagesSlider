@@ -13,9 +13,9 @@ const Mode = () => {
     const dispatch = useDispatch();
 
     let children;
-    if (config.gradient.mode === "blinking") {
+    if (config.mode === "blinking") {
         children = <Speed />;
-    } else if (config.gradient.mode === "gradient") {
+    } else if (config.mode === "gradient") {
         children = (
             <>
                 <Speed /> <Rotation />
@@ -29,7 +29,7 @@ const Mode = () => {
                 <FormControl fullWidth>
                     <InputLabel>Gradient mode</InputLabel>
                     <Select
-                        value={config.gradient.mode}
+                        value={config.mode}
                         label="Gradient mode"
                         onChange={({ target }) => dispatch(setGradientMode(target.value))}
                     >

@@ -24,7 +24,7 @@ const ColorsList = () => {
                 </Grid>
             </Grid>
             <List sx={{ width: "100%", bgcolor: "#00000050", borderRadius: 3 }}>
-                {config.gradient.colors.map((color, index) => (
+                {config.colors.map((color, index) => (
                     <>
                         {index !== 0 && <Divider />}
                         <ColorItem color={color} index={index}></ColorItem>

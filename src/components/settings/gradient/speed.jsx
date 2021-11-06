@@ -33,9 +33,9 @@ const setSpeed = (value, setSpeedValue, dispatch, extreme) => {
 const refreshSpeed = (config, setSpeedValue, dispatch, extreme) => {
     debugger;
     if (extreme) {
-        setSpeed(calculateStorageToSliderSpeed(config.gradient.speed), setSpeedValue, dispatch, extreme);
+        setSpeed(calculateStorageToSliderSpeed(config.speed), setSpeedValue, dispatch, extreme);
     } else {
-        setSpeed(calculateStorageToSliderSpeedExtreme(config.gradient.speed), setSpeedValue, dispatch, extreme);
+        setSpeed(calculateStorageToSliderSpeedExtreme(config.speed), setSpeedValue, dispatch, extreme);
     }
 };
 
@@ -45,7 +45,7 @@ const Speed = () => {
 
     const [extreme, setExtreme] = useState(false);
 
-    const [speedValue, setSpeedValue] = useState(calculateStorageToSliderSpeed(config.gradient.speed));
+    const [speedValue, setSpeedValue] = useState(calculateStorageToSliderSpeed(config.speed));
 
     return (
         <>

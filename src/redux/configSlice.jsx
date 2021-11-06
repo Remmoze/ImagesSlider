@@ -1,28 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import createImage from "../components/display/images";
-import Lines from "../content/lines.jpg";
-
 const configSlice = createSlice({
     name: "config",
     initialState: {
         debug: false,
-        mode: "gradient",
-        gradient: {
-            mode: "blinking", //blinking
-            speed: 100,
-            rotation: (Math.PI * 5) / 8, //radians
-            colors: [
-                "#FF0000", // Red
-                "#FF7F00", // Orange
-                "#FFFF00", // Yellow
-                "#00FF00", // Green
-                "#0000FF", // Blue
-                "#4B0082", // Indigo
-                "#9400D3", // Violet
-            ],
-        },
-        image: createImage(Lines),
+        mode: "blinking",
+        speed: 100,
+        rotation: (Math.PI * 5) / 8, //radians
+        colors: [
+            "#FF0000", // Red
+            "#FF7F00", // Orange
+            "#FFFF00", // Yellow
+            "#00FF00", // Green
+            "#0000FF", // Blue
+            "#4B0082", // Indigo
+            "#9400D3", // Violet
+        ],
+        image: null,
     },
     reducers: {
         setImage: (state, { payload }) => {
@@ -30,26 +24,26 @@ const configSlice = createSlice({
         },
 
         setGradientColors: (state, { payload }) => {
-            state.gradient.colors = payload;
+            state.colors = payload;
         },
         addGradientColor: (state, { payload }) => {
-            state.gradient.colors.push(payload);
+            state.colors.push(payload);
         },
         setGradientColorByIndex: (state, { payload }) => {
-            state.gradient.colors[payload.index] = payload.color;
+            state.colors[payload.index] = payload.color;
         },
         deleteGradientColorByIndex: (state, { payload }) => {
-            state.gradient.colors.splice(payload, 1);
+            state.colors.splice(payload, 1);
         },
 
         setGradientMode: (state, { payload }) => {
-            state.gradient.mode = payload;
+            state.mode = payload;
         },
         setGradientSpeed: (state, { payload }) => {
-            state.gradient.speed = payload;
+            state.speed = payload;
         },
         setGradientRotation: (state, { payload }) => {
-            state.gradient.rotation = payload;
+            state.rotation = payload;
         },
     },
 });
