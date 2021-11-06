@@ -37,20 +37,21 @@ const MakeGradient = (gradient, speed, colors) => {
     return gradient;
 };
 
-const createGradient = (context, config, frameCount) => {
+const createGradientType = (context, config, frameCount, mode) => {
     let canvas = context.canvas;
-    const radius = getRadius(canvas, config.colors, "gradient");
-    const gradient = getContextGradient(context, config.rotation, radius);
-
-    return MakeGradient(gradient, getSpeed(frameCount, config.speed), [...config.colors, config.colors[0]]);
-};
-
-const createBlinking = (context, config, frameCount) => {
-    let canvas = context.canvas;
-    const radius = getRadius(canvas, config.colors, "blinking");
+    const radius = getRadius(canvas, config.colors, mode);
     const gradient = getContextGradient(context, config.rotation, radius);
 
     return MakeGradient(gradient, getSpeed(frameCount, config.speed), config.colors);
+};
+
+//Have to fix: Transition between colors is flickering when there are only few colors
+const createGradient = (context, config, frameCount) => {
+    return createGradientType(context, config, frameCount, "gradient");
+};
+
+const createBlinking = (context, config, frameCount) => {
+    return createGradientType(context, config, frameCount, "blinking");
 };
 
 export { createGradient, createBlinking };
