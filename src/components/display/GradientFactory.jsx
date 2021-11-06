@@ -52,21 +52,34 @@ const getRadialGradient = (context, radius) => {
 
 const getSpeed = (frameCount, speed) => frameCount / speed;
 
+/* BROKEN
 const addColorStops = (gradient, speed, colors) => {
     let minOffset = 1;
-    let baseColor = null;
+    let baseColorIndex = null;
 
     for (let i = 0; i < colors.length; i++) {
         let colorOffset = ((i + speed) % colors.length) / colors.length;
 
         if (colorOffset < minOffset) {
             minOffset = colorOffset;
-            baseColor = colors[i];
+            baseColorIndex = i;
         }
 
         gradient.addColorStop(colorOffset, colors[i]);
     }
-    gradient.addColorStop(0, baseColor);
+    if (baseColorIndex + speed > 0.001) {
+        let baseIndex = (baseColorIndex - 1 + colors.length) % colors.length;
+        gradient.addColorStop(0, colors[baseIndex]);
+    }
+    return gradient;
+};
+*/
+
+const addColorStops = (gradient, speed, colors) => {
+    for (let i = 0; i < colors.length; i++) {
+        let colorOffset = ((i + speed) % colors.length) / colors.length;
+        gradient.addColorStop(colorOffset, colors[i]);
+    }
     return gradient;
 };
 
