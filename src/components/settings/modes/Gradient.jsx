@@ -1,5 +1,5 @@
-import Rotation from "../gradient/rotation";
-import Speed from "../gradient/speed";
+import Rotation from "../common/rotation";
+import Speed from "../common/speed";
 import ColorsList from "../gradient/colorsAdder";
 
 const Gradient = {

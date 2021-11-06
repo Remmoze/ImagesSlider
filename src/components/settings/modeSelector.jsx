@@ -6,23 +6,22 @@ import { setMode } from "../../redux/configSlice";
 
 import Blinking from "./modes/Blinking";
 import Gradient from "./modes/Gradient";
+import ImageSlider from "./modes/ImageSlider";
 
 const Mode = () => {
     const config = useSelector((storage) => storage.config);
     const dispatch = useDispatch();
 
-    let modes = [Blinking, Gradient];
+    let modes = [Blinking, Gradient, ImageSlider];
+
+    const changeMode = ({ target }) => dispatch(setMode(target.value));
 
     return (
         <>
             <Grid item mb={1}>
                 <FormControl fullWidth>
                     <InputLabel>Display mode</InputLabel>
-                    <Select
-                        value={config.mode}
-                        label="Display mode"
-                        onChange={({ target }) => dispatch(setMode(target.value))}
-                    >
+                    <Select value={config.mode} label="Display mode" onChange={changeMode}>
                         {modes.map((mode) => (
                             <MenuItem value={mode.name}>{mode.displayName}</MenuItem>
                         ))}

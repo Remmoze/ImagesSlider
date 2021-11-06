@@ -4,14 +4,9 @@ import useWindowSize from "./windowSize";
 import useCanvas from "./useCanvas";
 
 import { createBlinking, createGradient } from "./GradientFactory";
+import { createImageSlider } from "./PatternFactory";
 
-// const useStyles = makeStyles((theme) => ({
-//     canvas: {
-//         display: "block",
-//     },
-// }));
-
-const canvasUpdate = (context, frameCount, config) => {
+const canvasUpdate = (context, frameCount, config, image) => {
     const canvas = context.canvas;
     context.fillStyle = "black";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -22,6 +17,10 @@ const canvasUpdate = (context, frameCount, config) => {
 
     if (config.mode === "blinking") {
         context.fillStyle = createBlinking(context, config, frameCount);
+    }
+
+    if (config.mode === "image" && image != null) {
+        context.fillStyle = createImageSlider(context, image);
     }
 
     context.fillRect(0, 0, canvas.width, canvas.height);

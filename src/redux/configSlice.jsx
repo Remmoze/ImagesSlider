@@ -16,11 +16,11 @@ const configSlice = createSlice({
             "#4B0082", // Indigo
             "#9400D3", // Violet
         ],
-        image: null,
+        imageUrl: null,
     },
     reducers: {
-        setImage: (state, { payload }) => {
-            state.image = payload;
+        setImageUrl: (state, { payload }) => {
+            state.imageUrl = payload;
         },
 
         setColors: (state, { payload }) => {
@@ -48,7 +48,7 @@ const configSlice = createSlice({
     },
 });
 
-export const { setImage, setMode, setSpeed, setRotation, addColor, setColorByIndex, deleteColorByIndex } =
+export const { setImageUrl, setMode, setSpeed, setRotation, addColor, setColorByIndex, deleteColorByIndex } =
     configSlice.actions;
 
 export default configSlice.reducer;

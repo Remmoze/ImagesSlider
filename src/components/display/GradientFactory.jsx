@@ -1,6 +1,10 @@
+const getRealRadius = (canvas) => {
+    return Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2;
+};
+
 const getRadius = (canvas, colors, mode) => {
     //circumscribed circle around canvas rectangle
-    let realRadius = Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2;
+    let realRadius = getRealRadius(canvas);
 
     //how much space one color takes up
     let colorStopWidth = (realRadius * 2) / colors.length;
@@ -12,12 +16,14 @@ const getRadius = (canvas, colors, mode) => {
     } else if (mode === "gradient") {
         //increase circumscribed circle's radius by a color stop
         radius = realRadius + colorStopWidth;
+    } else if (mode === "image") {
+        radius = realRadius;
     }
 
     return radius;
 };
 
-const getContextGradient = (context, rotation, radius) => {
+const getLinearGradient = (context, rotation, radius) => {
     //calculate location of points on a circle based on rotation
     let x1 = Math.cos(-rotation + Math.PI) * radius + context.canvas.width / 2;
     let y1 = Math.sin(-rotation + Math.PI) * radius + context.canvas.height / 2;
@@ -29,7 +35,7 @@ const getContextGradient = (context, rotation, radius) => {
 
 const getSpeed = (frameCount, speed) => frameCount / speed;
 
-const MakeGradient = (gradient, speed, colors) => {
+const addColorStops = (gradient, speed, colors) => {
     for (let i = 0; i < colors.length; i++) {
         let coloroffset = ((i + speed) % colors.length) / colors.length;
         gradient.addColorStop(coloroffset, colors[i]);
@@ -37,12 +43,14 @@ const MakeGradient = (gradient, speed, colors) => {
     return gradient;
 };
 
+/* ------------------------------ */
+
 const createGradientType = (context, config, frameCount, mode) => {
     let canvas = context.canvas;
     const radius = getRadius(canvas, config.colors, mode);
-    const gradient = getContextGradient(context, config.rotation, radius);
+    const gradient = getLinearGradient(context, config.rotation, radius);
 
-    return MakeGradient(gradient, getSpeed(frameCount, config.speed), config.colors);
+    return addColorStops(gradient, getSpeed(frameCount, config.speed), config.colors);
 };
 
 //Have to fix: Transition between colors is flickering when there are only few colors
