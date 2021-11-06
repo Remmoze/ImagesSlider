@@ -7,12 +7,13 @@ import { setMode } from "../../redux/configSlice";
 import Blinking from "./modes/Blinking";
 import Gradient from "./modes/Gradient";
 import ImageSlider from "./modes/ImageSlider";
+import Radial from "./modes/Radial";
 
 const Mode = () => {
     const config = useSelector((storage) => storage.config);
     const dispatch = useDispatch();
 
-    let modes = [Blinking, Gradient, ImageSlider];
+    let modes = [Blinking, Gradient, Radial, ImageSlider];
 
     const changeMode = ({ target }) => dispatch(setMode(target.value));
 

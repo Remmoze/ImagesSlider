@@ -2,44 +2,71 @@ const getRealRadius = (canvas) => {
     return Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2;
 };
 
+const getColorStopWidth = (radius, colors) => {
+    return (radius * 2) / colors.length;
+};
+
 const getRadius = (canvas, colors, mode) => {
     //circumscribed circle around canvas rectangle
     let realRadius = getRealRadius(canvas);
 
     //how much space one color takes up
-    let colorStopWidth = (realRadius * 2) / colors.length;
+    let colorStopWidth = getColorStopWidth(realRadius, colors);
 
     let radius = 0;
     if (mode === "blinking") {
         // set circumscribed circle's radius to a color stop
         radius = realRadius * colorStopWidth;
-    } else if (mode === "gradient") {
+    } else if (mode === "gradient" || mode === "radial") {
         //increase circumscribed circle's radius by a color stop
         radius = realRadius + colorStopWidth;
-    } else if (mode === "image") {
-        radius = realRadius;
     }
 
     return radius;
 };
 
 const getLinearGradient = (context, rotation, radius) => {
+    let canvas = context.canvas;
     //calculate location of points on a circle based on rotation
-    let x1 = Math.cos(-rotation + Math.PI) * radius + context.canvas.width / 2;
-    let y1 = Math.sin(-rotation + Math.PI) * radius + context.canvas.height / 2;
-    let x2 = Math.cos(-rotation) * radius + context.canvas.width / 2;
-    let y2 = Math.sin(-rotation) * radius + context.canvas.height / 2;
+    let x1 = Math.cos(-rotation + Math.PI) * radius + canvas.width / 2;
+    let y1 = Math.sin(-rotation + Math.PI) * radius + canvas.height / 2;
+    let x2 = Math.cos(-rotation) * radius + canvas.width / 2;
+    let y2 = Math.sin(-rotation) * radius + canvas.height / 2;
 
     return context.createLinearGradient(x1, y1, x2, y2);
 };
 
+const getRadialGradient = (context, radius) => {
+    let canvas = context.canvas;
+    return context.createRadialGradient(
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        radius
+    );
+};
+
+/* ------------------------------ */
+
 const getSpeed = (frameCount, speed) => frameCount / speed;
 
 const addColorStops = (gradient, speed, colors) => {
+    let minOffset = 1;
+    let baseColor = null;
+
     for (let i = 0; i < colors.length; i++) {
-        let coloroffset = ((i + speed) % colors.length) / colors.length;
-        gradient.addColorStop(coloroffset, colors[i]);
+        let colorOffset = ((i + speed) % colors.length) / colors.length;
+
+        if (colorOffset < minOffset) {
+            minOffset = colorOffset;
+            baseColor = colors[i];
+        }
+
+        gradient.addColorStop(colorOffset, colors[i]);
     }
+    gradient.addColorStop(0, baseColor);
     return gradient;
 };
 
@@ -62,4 +89,12 @@ const createBlinking = (context, config, frameCount) => {
     return createGradientType(context, config, frameCount, "blinking");
 };
 
-export { createGradient, createBlinking };
+const createRadial = (context, config, frameCount) => {
+    let canvas = context.canvas;
+    const radius = getRadius(canvas, config.colors, "radial");
+    const gradient = getRadialGradient(context, radius);
+
+    return addColorStops(gradient, getSpeed(frameCount, config.speed), config.colors);
+};
+
+export { createGradient, createBlinking, createRadial };
