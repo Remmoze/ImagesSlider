@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Slider } from "@mui/material";
 
-import { setGradientRotation } from "../../../redux/configSlice";
+import { setRotation } from "../../../redux/configSlice";
 
 const getRotationLabel = (angle) => {
     return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;
 };
 
-const setRotation = (rotation, setRotationValue, dispatch) => {
+const changeRotation = (rotation, setRotationValue, dispatch) => {
     setRotationValue(rotation);
-    dispatch(setGradientRotation(rotation));
+    dispatch(setRotation(rotation));
 };
 
 const Rotation = () => {
@@ -22,7 +22,7 @@ const Rotation = () => {
             <Grid item>Rotation - {getRotationLabel(config.rotation)}</Grid>
             <Grid item>
                 <Slider
-                    onChange={(e, value) => setRotation(value, setRotationValue, dispatch)}
+                    onChange={(e, value) => changeRotation(value, setRotationValue, dispatch)}
                     defaultValue={rotationValue}
                     min={0}
                     max={Math.PI * 2}

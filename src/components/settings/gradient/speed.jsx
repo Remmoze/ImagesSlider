@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Checkbox, Typography, Grid, Slider } from "@mui/material";
 
-import { setGradientSpeed } from "../../../redux/configSlice";
+import { setSpeed } from "../../../redux/configSlice";
 
 const calculateSliderToStorageSpeed = (speed) => {
     return (1 - speed / 100) * 110 + 10;
@@ -20,22 +20,21 @@ const calculateStorageToSliderSpeedExtreme = (speed) => {
     return Math.round((1 - (speed - 1) / 110) * 100);
 };
 
-const setSpeed = (value, setSpeedValue, dispatch, extreme) => {
+const changeSpeed = (value, setSpeedValue, dispatch, extreme) => {
     value = Math.min(Math.max(value, 0), 100);
     setSpeedValue(value);
     if (extreme) {
-        dispatch(setGradientSpeed(calculateSliderToStorageSpeedExtreme(value)));
+        dispatch(setSpeed(calculateSliderToStorageSpeedExtreme(value)));
     } else {
-        dispatch(setGradientSpeed(calculateSliderToStorageSpeed(value)));
+        dispatch(setSpeed(calculateSliderToStorageSpeed(value)));
     }
 };
 
 const refreshSpeed = (config, setSpeedValue, dispatch, extreme) => {
-    debugger;
     if (extreme) {
-        setSpeed(calculateStorageToSliderSpeed(config.speed), setSpeedValue, dispatch, extreme);
+        changeSpeed(calculateStorageToSliderSpeed(config.speed), setSpeedValue, dispatch, extreme);
     } else {
-        setSpeed(calculateStorageToSliderSpeedExtreme(config.speed), setSpeedValue, dispatch, extreme);
+        changeSpeed(calculateStorageToSliderSpeedExtreme(config.speed), setSpeedValue, dispatch, extreme);
     }
 };
 
@@ -68,7 +67,7 @@ const Speed = () => {
             </Grid>
             <Grid mt={-1} item>
                 <Slider
-                    onChange={(e, value) => setSpeed(value, setSpeedValue, dispatch, extreme)}
+                    onChange={(e, value) => changeSpeed(value, setSpeedValue, dispatch, extreme)}
                     defaultValue={speedValue}
                     min={0}
                     max={100}

@@ -23,39 +23,32 @@ const configSlice = createSlice({
             state.image = payload;
         },
 
-        setGradientColors: (state, { payload }) => {
+        setColors: (state, { payload }) => {
             state.colors = payload;
         },
-        addGradientColor: (state, { payload }) => {
+        addColor: (state, { payload }) => {
             state.colors.push(payload);
         },
-        setGradientColorByIndex: (state, { payload }) => {
+        setColorByIndex: (state, { payload }) => {
             state.colors[payload.index] = payload.color;
         },
-        deleteGradientColorByIndex: (state, { payload }) => {
+        deleteColorByIndex: (state, { payload }) => {
             state.colors.splice(payload, 1);
         },
 
-        setGradientMode: (state, { payload }) => {
+        setMode: (state, { payload }) => {
             state.mode = payload;
         },
-        setGradientSpeed: (state, { payload }) => {
+        setSpeed: (state, { payload }) => {
             state.speed = payload;
         },
-        setGradientRotation: (state, { payload }) => {
+        setRotation: (state, { payload }) => {
             state.rotation = payload;
         },
     },
 });
 
-export const {
-    setImage,
-    setGradientMode,
-    setGradientSpeed,
-    setGradientRotation,
-    addGradientColor,
-    setGradientColorByIndex,
-    deleteGradientColorByIndex,
-} = configSlice.actions;
+export const { setImage, setMode, setSpeed, setRotation, addColor, setColorByIndex, deleteColorByIndex } =
+    configSlice.actions;
 
 export default configSlice.reducer;

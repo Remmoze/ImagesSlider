@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Grid, IconButton } from "@mui/material";
 import { List, Divider } from "@mui/material";
 
-import { addGradientColor } from "../../../redux/configSlice";
+import { addColor } from "../../../redux/configSlice";
 import ColorItem from "./colorItem";
 
 const ColorsList = () => {
@@ -18,7 +18,7 @@ const ColorsList = () => {
             <Grid container direction="row" alignItems="center">
                 <Grid item>Colors</Grid>
                 <Grid item>
-                    <IconButton onClick={() => dispatch(addGradientColor("black"))}>
+                    <IconButton onClick={() => dispatch(addColor("black"))}>
                         <AddIcon />
                     </IconButton>
                 </Grid>

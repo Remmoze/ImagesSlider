@@ -7,7 +7,7 @@ import { IconButton, TextField } from "@mui/material";
 import { ListItem, ListItemText } from "@mui/material";
 import { Box } from "@mui/system";
 
-import { deleteGradientColorByIndex, setGradientColorByIndex } from "../../../redux/configSlice";
+import { deleteColorByIndex, setColorByIndex } from "../../../redux/configSlice";
 
 const isColor = (strColor) => {
     const s = new Option().style;
@@ -21,7 +21,7 @@ const changeColor = (dispatch, index, color, setError) => {
         return;
     }
     setError(false);
-    dispatch(setGradientColorByIndex({ index, color }));
+    dispatch(setColorByIndex({ index, color }));
 };
 
 const ColorItem = ({ color, index }) => {
@@ -58,7 +58,7 @@ const ColorItem = ({ color, index }) => {
             </ListItemText>
             <IconButton
                 onClick={() => {
-                    dispatch(deleteGradientColorByIndex(index));
+                    dispatch(deleteColorByIndex(index));
                 }}
             >
                 <DeleteIcon />

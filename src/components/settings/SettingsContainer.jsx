@@ -2,7 +2,7 @@ import React from "react";
 //import { useSelector, useDispatch } from "react-redux";
 import { Grid, Typography } from "@mui/material";
 
-import Mode from "./gradient/modeSelector";
+import Mode from "./modeSelector";
 
 const SettingsContainer = () => {
     //const config = useSelector((storage) => storage.config);
