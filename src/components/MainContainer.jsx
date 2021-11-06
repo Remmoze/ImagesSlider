@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-import SettingsOverlay from "./settings/SettingsOverlay";
+import { AnimatedSettingsOverlay } from "./settings/SettingsOverlay";
 import Display from "./display/Display";
-import { styled } from "@mui/system";
-
-const StyledDisplay = styled(Display)({
-    cursor: "none",
-    visibility: "hidden",
-});
+import { Checkbox, Slide } from "@mui/material";
 
 const MainContainer = () => {
+    const [checked, setCheck] = useState(true);
     return (
         <div>
-            <SettingsOverlay />
-            <StyledDisplay />
+            <Checkbox
+                sx={{
+                    position: "absolute",
+                    bottom: 7,
+                    left: 7,
+                }}
+                checked={checked}
+                onChange={({ target }) => setCheck(target.checked)}
+            />
+            <AnimatedSettingsOverlay active={checked} />
+            {/* <SettingsOverlay /> */}
+            <Display />
         </div>
     );
 };
