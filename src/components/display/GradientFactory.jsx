@@ -48,9 +48,9 @@ const getRadialGradient = (context, radius) => {
     );
 };
 
-/* ------------------------------ */
-
 const getSpeed = (frameCount, speed) => frameCount / speed;
+
+/* ------------------------------ */
 
 /* BROKEN
 const addColorStops = (gradient, speed, colors) => {

@@ -9,12 +9,12 @@ const configSlice = createSlice({
         rotation: (Math.PI * 5) / 8, //radians
         colors: [
             "#FF0000", // Red
-            "#FF7F00", // Orange
+            "#FFA500", // Orange
             "#FFFF00", // Yellow
-            "#00FF00", // Green
+            "#008000", // Green
             "#0000FF", // Blue
             "#4B0082", // Indigo
-            "#9400D3", // Violet
+            "#EE82EE", // Violet
         ],
         imageUrl: null,
     },
@@ -22,6 +22,12 @@ const configSlice = createSlice({
         setImageUrl: (state, { payload }) => {
             state.imageUrl = payload;
         },
+
+        /*
+            Should add a smooth transition between colors
+            https://stackoverflow.com/questions/30196043/how-to-display-a-smoother-gradient-in-html5-canvas
+            https://stackoverflow.com/questions/21835739/smooth-color-transition-algorithm
+        */
 
         setColors: (state, { payload }) => {
             state.colors = payload;
