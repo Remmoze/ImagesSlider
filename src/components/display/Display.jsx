@@ -1,7 +1,12 @@
 import React from "react";
-import Canvas from "./canvas";
+import { useSelector } from "react-redux";
+
+import Canvas from "./Canvas";
+import ImageDisplay from "./ImageDisplay";
 
 const Display = () => {
+    const mode = useSelector((storage) => storage.config.mode);
+    if (mode === "image") return <ImageDisplay />;
     return <Canvas />;
 };
 

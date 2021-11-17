@@ -62,7 +62,6 @@ const drawUpdate = (context, config) => {
 };
 
 const CanvasUpdate = (context, frameCount, config, image) => {
-    const canvas = context.canvas;
     drawDefault(context);
 
     let fillStyle = createFillStyle(context, config, frameCount, image);

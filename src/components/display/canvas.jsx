@@ -5,12 +5,11 @@ import useCanvas from "./useCanvas";
 
 import CanvasUpdate from "./drawing/canvasUpdate";
 
-const Canvas = (args) => {
-    args = { ...args, ...useWindowSize() };
-
+const Canvas = () => {
+    const [width, height] = useWindowSize();
     const canvasRef = useCanvas(CanvasUpdate);
 
-    return <canvas ref={canvasRef} {...args} />;
+    return <canvas ref={canvasRef} width={width} height={height} />;
 };
 
 export default Canvas;
