@@ -3,7 +3,7 @@ import useWindowSize from "./windowSize";
 
 import useCanvas from "./useCanvas";
 
-import CanvasUpdate from "./canvasUpdate";
+import CanvasUpdate from "./drawing/canvasUpdate";
 
 const Canvas = (args) => {
     args = { ...args, ...useWindowSize() };
