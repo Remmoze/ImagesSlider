@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const configSlice = createSlice({
     name: "config",
     initialState: {
-        debug: true,
+        debug: false,
         mode: "blinking",
         speed: 100,
         rotation: (Math.PI * 5) / 8, //radians
