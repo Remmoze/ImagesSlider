@@ -6,7 +6,7 @@ const ImageSlider = {
     name: "image",
     displayName: "Image",
     children: [
-        <Speed key={"ImageSpeed"} />,
+        <Speed minVal={10} maxVal={110} key={"ImageSpeed"} />,
         <Rotation key={"ImageRotation"} />,
         <FileUploader key={"ImageFileUploader"} />,
     ],

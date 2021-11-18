@@ -4,58 +4,62 @@ import { Checkbox, Typography, Grid, Slider } from "@mui/material";
 
 import { setSpeed } from "../../../redux/configSlice";
 
-const calculateSliderToStorageSpeed = (speed) => {
-    return (1 - speed / 100) * 110 + 10;
+/*
+    f(x) = -x/max+1
+    gives a reverse coefficient map 0-100 -> 1-0
+
+    100 - 101.0102
+    150 - 151.5152
+    small modifications to make f(max) = 0.01
+*/
+
+function clamp(val, min, max) {
+    return Math.ceil(Math.floor(val, max), min);
+}
+
+const getCoefficientFromSlider = (value, extreme) => -value / (extreme ? 151.5152 : 101.0102) + 1;
+
+const changeSpeed = (newSliderValue, setSliderValue, dispatch, extreme, min, max) => {
+    if (extreme) min = 1;
+    setSliderValue(newSliderValue);
+    let coef = getCoefficientFromSlider(newSliderValue, extreme);
+    dispatch(setSpeed((max - min) * coef + min));
 };
 
-const calculateStorageToSliderSpeed = (speed) => {
-    return Math.round((1 - (speed - 10) / 110) * 100);
+const changeExtreme = (checked, setExtreme, sliderValue, setSliderValue, dispatch, min, max) => {
+    if (checked) sliderValue = clamp(sliderValue, 0, 150);
+    else sliderValue = clamp(sliderValue, 0, 100);
+    setExtreme(checked);
+    changeSpeed(sliderValue, setSliderValue, dispatch, checked, min, max);
 };
 
-const calculateSliderToStorageSpeedExtreme = (speed) => {
-    return (1 - speed / 100) * 110 + 1;
-};
-
-const calculateStorageToSliderSpeedExtreme = (speed) => {
-    return Math.round((1 - (speed - 1) / 110) * 100);
-};
-
-const changeSpeed = (value, setSpeedValue, dispatch, extreme) => {
-    value = Math.min(Math.max(value, 0), 100);
-    setSpeedValue(value);
-    if (extreme) {
-        dispatch(setSpeed(calculateSliderToStorageSpeedExtreme(value)));
-    } else {
-        dispatch(setSpeed(calculateSliderToStorageSpeed(value)));
-    }
-};
-
-const refreshSpeed = (config, setSpeedValue, dispatch, extreme) => {
-    if (extreme) {
-        changeSpeed(calculateStorageToSliderSpeed(config.speed), setSpeedValue, dispatch, extreme);
-    } else {
-        changeSpeed(calculateStorageToSliderSpeedExtreme(config.speed), setSpeedValue, dispatch, extreme);
-    }
-};
-
-const Speed = () => {
-    const config = useSelector((storage) => storage.config);
+const Speed = ({ minVal, maxVal }) => {
+    minVal = minVal || 10;
+    maxVal = maxVal || 110;
+    //const configSpeed = useSelector((storage) => storage.config.speed);
     const dispatch = useDispatch();
+    window.disp = dispatch;
+    window.ss = setSpeed;
 
     const [extreme, setExtreme] = useState(false);
-
-    const [speedValue, setSpeedValue] = useState(calculateStorageToSliderSpeed(config.speed));
-
+    const [sliderValue, setSliderValue] = useState(50); // slider 0-100
     return (
         <>
             <Grid container direction="row" alignItems="center">
                 <Grid item>Speed</Grid>
                 <Grid item ml={1} mr={-1}>
                     <Checkbox
-                        onChange={({ target }) => {
-                            setExtreme(target.checked);
-                            refreshSpeed(config, setSpeedValue, dispatch, target.checked);
-                        }}
+                        onChange={({ target }) =>
+                            changeExtreme(
+                                target.checked,
+                                setExtreme,
+                                sliderValue,
+                                setSliderValue,
+                                dispatch,
+                                minVal,
+                                maxVal
+                            )
+                        }
                         color="error"
                         size="small"
                         checked={extreme}
@@ -67,12 +71,12 @@ const Speed = () => {
             </Grid>
             <Grid mt={-1} item>
                 <Slider
-                    onChange={(e, value) => changeSpeed(value, setSpeedValue, dispatch, extreme)}
-                    defaultValue={speedValue}
+                    onChange={(e, value) => changeSpeed(value, setSliderValue, dispatch, extreme, minVal, maxVal)}
+                    defaultValue={sliderValue}
                     min={0}
-                    max={100}
+                    max={extreme ? 150 : 100}
                     step={1}
-                    value={speedValue}
+                    value={sliderValue}
                     valueLabelDisplay="auto"
                 />
             </Grid>
@@ -81,9 +85,3 @@ const Speed = () => {
 };
 
 export default Speed;
-
-/*
-
-FIX: when changing non-extreme max value to extreme, speed should not change. Instead it maxes out
-
-*/
