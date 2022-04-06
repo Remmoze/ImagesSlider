@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Checkbox, Typography, Grid, Slider } from "@mui/material";
 
 import { setSpeed } from "../../../redux/configSlice";
@@ -36,13 +36,12 @@ const changeExtreme = (checked, setExtreme, sliderValue, setSliderValue, dispatc
 const Speed = ({ minVal, maxVal }) => {
     minVal = minVal || 10;
     maxVal = maxVal || 110;
-    //const configSpeed = useSelector((storage) => storage.config.speed);
     const dispatch = useDispatch();
     window.disp = dispatch;
     window.ss = setSpeed;
 
     const [extreme, setExtreme] = useState(false);
-    const [sliderValue, setSliderValue] = useState(50); // slider 0-100
+    const [sliderValue, setSliderValue] = useState(50);
     return (
         <>
             <Grid container direction="row" alignItems="center">
