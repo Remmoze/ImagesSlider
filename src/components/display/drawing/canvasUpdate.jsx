@@ -1,4 +1,6 @@
-import { createBlinking, createGradient, createRadial } from "./GradientFactory";
+import { createGradient } from "./display modes/gradient";
+import { createBlinking } from "./display modes/blinking";
+import { createRadial } from "./display modes/radial";
 import { createImageSlider } from "./PatternFactory";
 
 const drawDebug = (context, frameCount) => {
