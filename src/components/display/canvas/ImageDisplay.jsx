@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useWindowSize from "./windowSize";
 import { Box } from "@mui/system";
 
-import Image from "../../content/city.jpg";
+import Image from "../../../content/city.jpg";
 import { useSelector } from "react-redux";
 import useTimer from "./useTimer";
 

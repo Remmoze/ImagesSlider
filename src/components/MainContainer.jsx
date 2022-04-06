@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { AnimatedSettingsOverlay } from "./settings/SettingsOverlay";
-import Display from "./display/Display";
+import Display from "./display/canvas/Display";
 import { Checkbox } from "@mui/material";
 
 const MainContainer = () => {
