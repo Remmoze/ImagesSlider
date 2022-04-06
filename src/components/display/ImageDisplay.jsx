@@ -13,7 +13,6 @@ const ImageDisplay = () => {
 
     useTimer((dt) => {
         setOffset((prev) => {
-            console.log(speed);
             return prev + speed / 500;
         });
     });
