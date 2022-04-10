@@ -3,6 +3,8 @@ import { createBlinking } from "./display modes/blinking";
 import { createRadial } from "./display modes/radial";
 import { createImageSlider } from "./PatternFactory";
 
+import { updateDots } from "./display modes/dots";
+
 const drawDebug = (context, frameCount) => {
     const canvas = context.canvas;
     let radius = 80;
@@ -40,35 +42,54 @@ const createFillStyle = (context, config, frameCount, image) => {
             if (image !== null) return createImageSlider(context, image);
             return null;
         }
-        default:
+        default: {
             return null;
+        }
+    }
+};
+
+const getDrawType = (mode) => {
+    switch (mode) {
+        case "gradient":
+        case "blinking":
+        case "radial":
+        case "image": {
+            return "fillstyle";
+        }
+
+        case "dots": {
+            return "update";
+        }
+
+        default: {
+            return "unknown";
+        }
     }
 };
 
 const drawUpdate = (context, config) => {
     const canvas = context.canvas;
-    switch (config.mode) {
-        case "gradient":
-        case "blinking":
-        case "radial": {
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            break;
-        }
-        default:
-            break;
-    }
-
-    if (config.mode === "image") {
+    const type = getDrawType(config.mode);
+    if (type === "fillstyle") {
         context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    if (config.mode === "dots") {
+        updateDots(context, config);
     }
 };
 
 const CanvasUpdate = (context, frameCount, config, image) => {
     drawDefault(context);
 
-    let fillStyle = createFillStyle(context, config, frameCount, image);
-    if (fillStyle !== null) {
-        context.fillStyle = fillStyle;
+    const type = getDrawType(config.mode);
+    if (type === "fillstyle") {
+        let fillStyle = createFillStyle(context, config, frameCount, image);
+        if (fillStyle !== null) {
+            context.fillStyle = fillStyle;
+            drawUpdate(context, config);
+        }
+    }
+    if (type === "update") {
         drawUpdate(context, config);
     }
 

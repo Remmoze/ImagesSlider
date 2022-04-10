@@ -9,11 +9,13 @@ import Gradient from "./modes/Gradient";
 import ImageSlider from "./modes/ImageSlider";
 import Radial from "./modes/Radial";
 
+import Dots from "./modes/Dots";
+
 const Mode = () => {
     const config = useSelector((storage) => storage.config);
     const dispatch = useDispatch();
 
-    let modes = [Blinking, Gradient, Radial, ImageSlider];
+    let modes = [Blinking, Gradient, Radial, ImageSlider, Dots];
 
     const changeMode = ({ target }) => dispatch(setMode(target.value));
 
