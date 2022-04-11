@@ -32,8 +32,9 @@ const Connect = (context) => {
         let point1 = Dots[i];
         for (let j = i + 1; j < Dots.length; j++) {
             let point2 = Dots[j];
-            let distance = Math.sqrt((point2.pos.x - point1.pos.x) ** 2 + (point2.pos.y - point1.pos.y) ** 2);
-            if (distance < maxDistance) {
+            let distanceSrt = (point2.pos.x - point1.pos.x) ** 2 + (point2.pos.y - point1.pos.y) ** 2;
+            if (distanceSrt < maxDistance ** 2) {
+                let distance = Math.sqrt(distanceSrt);
                 let alpha = Math.floor(255 - (255 * distance) / maxDistance).toString(16);
                 if (alpha.length < 2) alpha = "0" + alpha;
 
@@ -42,6 +43,8 @@ const Connect = (context) => {
                 color.addColorStop(1, point2.color + alpha);
 
                 context.strokeStyle = color;
+                context.lineWidth = (1 - distance / maxDistance + 0.2) * 4;
+                context.lineCap = "round";
                 context.beginPath();
                 context.moveTo(point1.pos.x, point1.pos.y);
                 context.lineTo(point2.pos.x, point2.pos.y);
@@ -62,8 +65,7 @@ const updateDots = (context, config) => {
     context.fillStyle = "#000000";
     context.lineWidth = 2;
     Connect(context);
-
-    Dots.map((dot) => dot.render(context));
+    if (config.showDots) Dots.map((dot) => dot.render(context));
 };
 
 export { updateDots };

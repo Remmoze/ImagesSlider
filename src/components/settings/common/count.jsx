@@ -21,7 +21,7 @@ const Count = () => {
                     onChange={(e, value) => changeCount(value, setCount, dispatch)}
                     defaultValue={count}
                     min={1}
-                    max={200}
+                    max={250}
                     step={1}
                     value={count}
                     valueLabelDisplay="off"

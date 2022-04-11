@@ -4,7 +4,7 @@ const configSlice = createSlice({
     name: "config",
     initialState: {
         debug: false,
-        mode: "blinking",
+        mode: "dots",
         speed: 100,
         rotation: (Math.PI * 5) / 8, //radians
         colors: [
@@ -19,6 +19,7 @@ const configSlice = createSlice({
         imageUrl: null,
         dotsCount: 130,
         dotsMaxDistance: 120,
+        showDots: true,
     },
     reducers: {
         setImageUrl: (state, { payload }) => {
@@ -58,10 +59,23 @@ const configSlice = createSlice({
         setCount: (state, { payload }) => {
             state.dotsCount = payload;
         },
+
+        setShowDots: (state, { payload }) => {
+            state.showDots = payload;
+        },
     },
 });
 
-export const { setImageUrl, setMode, setSpeed, setRotation, addColor, setColorByIndex, deleteColorByIndex, setCount } =
-    configSlice.actions;
+export const {
+    setImageUrl,
+    setMode,
+    setSpeed,
+    setRotation,
+    addColor,
+    setColorByIndex,
+    deleteColorByIndex,
+    setCount,
+    setShowDots,
+} = configSlice.actions;
 
 export default configSlice.reducer;
