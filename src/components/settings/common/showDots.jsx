@@ -4,9 +4,11 @@ import { Checkbox, Grid, Slider } from "@mui/material";
 
 import { setShowDots } from "../../../redux/configSlice";
 
-const changeShow = (count, setShow, dispatch) => {
-    setShow(count);
-    dispatch(setShowDots(count));
+const changeShow = (show, setShow, dispatch) => {
+    setShow(show);
+    console.log(setShowDots(show));
+    dispatch({ type: "config/setShowDots", payload: show });
+    //dispatch(setShowDots(show));
 };
 
 const ShowDots = () => {
