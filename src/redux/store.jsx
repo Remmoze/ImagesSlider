@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import configReducer from "./configSlice";
 import dotsReducer from "./dotsSlice";
-import gradientSlice from "./canvasGradientSlice";
+import gradientSlice from "./gradientSlice";
 
 const rootReducer = combineReducers({
     config: configReducer,

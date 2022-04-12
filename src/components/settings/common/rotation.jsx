@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Slider } from "@mui/material";
 
-import { setRotation } from "../../../redux/canvasGradientSlice";
+import { setRotation } from "../../../redux/gradientSlice";
 
 const getRotationLabel = (angle) => {
     return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;

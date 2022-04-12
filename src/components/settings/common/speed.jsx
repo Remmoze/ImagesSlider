@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Checkbox, Typography, Grid, Slider } from "@mui/material";
 
-import { setSpeed } from "../../../redux/canvasGradientSlice";
+import { setSpeed } from "../../../redux/gradientSlice";
 
 /*
     f(x) = -x/max+1

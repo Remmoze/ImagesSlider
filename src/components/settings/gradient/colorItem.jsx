@@ -7,7 +7,7 @@ import { IconButton, TextField } from "@mui/material";
 import { ListItem, ListItemText } from "@mui/material";
 import { Box } from "@mui/system";
 
-import { deleteColorByIndex, setColorByIndex } from "../../../redux/canvasGradientSlice";
+import { deleteColorByIndex, setColorByIndex } from "../../../redux/gradientSlice";
 
 const isColor = (strColor) => {
     const s = new Option().style;

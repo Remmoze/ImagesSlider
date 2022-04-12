@@ -2,7 +2,7 @@ import FileUploader from "../imageSlider/fileUploader";
 import { useSelector, useDispatch } from "react-redux";
 
 import SettingsSlider from "../components/settingsSlider";
-import { setSpeed } from "../../../redux/canvasGradientSlice";
+import { setSpeed } from "../../../redux/gradientSlice";
 import Rotation from "../common/rotation";
 
 // const ImageSlider = {
