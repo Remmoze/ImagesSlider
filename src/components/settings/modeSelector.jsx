@@ -11,12 +11,17 @@ import Radial from "./modes/Radial";
 
 import Dots from "./modes/Dots";
 
+let modes = [
+    {
+        name: "dots",
+        displayName: "Dots",
+        component: <Dots />,
+    },
+];
+
 const Mode = () => {
     const config = useSelector((storage) => storage.config);
     const dispatch = useDispatch();
-
-    let modes = [Blinking, Gradient, Radial, ImageSlider, Dots];
-
     const changeMode = ({ target }) => dispatch(setMode(target.value));
 
     return (
@@ -33,7 +38,7 @@ const Mode = () => {
                     </Select>
                 </FormControl>
             </Grid>
-            {modes.find((mode) => mode.name === config.mode).children.map((child) => child)}
+            {modes.find((mode) => mode.name === config.mode).component}
         </>
     );
 };

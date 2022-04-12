@@ -17,9 +17,6 @@ const configSlice = createSlice({
             "#EE82EE", // Violet
         ],
         imageUrl: null,
-        dotsCount: 130,
-        dotsMaxDistance: 120,
-        showDots: true,
     },
     reducers: {
         setImageUrl: (state, { payload }) => {
@@ -54,28 +51,10 @@ const configSlice = createSlice({
         setRotation: (state, { payload }) => {
             state.rotation = payload;
         },
-
-        // TODO: change dotsCount to count
-        setCount: (state, { payload }) => {
-            state.dotsCount = payload;
-        },
-
-        setShowDots: (state, { payload }) => {
-            state.showDots = payload;
-        },
     },
 });
 
-export const {
-    setImageUrl,
-    setMode,
-    setSpeed,
-    setRotation,
-    addColor,
-    setColorByIndex,
-    deleteColorByIndex,
-    setCount,
-    setShowDots,
-} = configSlice.actions;
+export const { setImageUrl, setMode, setSpeed, setRotation, addColor, setColorByIndex, deleteColorByIndex } =
+    configSlice.actions;
 
 export default configSlice.reducer;
