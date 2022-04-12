@@ -24,7 +24,7 @@ const Dots = () => {
         <>
             <SettingsSlider
                 defaultValue={dots.speed}
-                label={"Speed - " + dots.speed}
+                label={"Speed - " + dots.speed + " pixels/s"}
                 min={1}
                 max={50}
                 step={1}

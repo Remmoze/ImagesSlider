@@ -35,7 +35,7 @@ const getLinearGradient = (context, rotation, radius) => {
 
     return context.createLinearGradient(x1, y1, x2, y2);
 };
-const getSpeed = (frameCount, speed) => frameCount / speed;
+const getSpeed = (frameCount, speed) => (frameCount / speed) * 1.5;
 
 const addColorStops = (gradient, speed, colors) => {
     for (let i = 0; i < colors.length; i++) {

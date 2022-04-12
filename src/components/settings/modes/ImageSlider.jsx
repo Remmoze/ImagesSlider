@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SettingsSlider from "../components/settingsSlider";
 import { setSpeed } from "../../../redux/gradientSlice";
 import Rotation from "../common/rotation";
+import { Typography } from "@mui/material";
 
 // const ImageSlider = {
 //     name: "image",
@@ -27,6 +28,9 @@ const ImageSlider = () => {
 
     return (
         <>
+            <Typography mt={5} mb={5}>
+                Currently broken.
+            </Typography>
             <SettingsSlider
                 defaultValue={gradient.speed}
                 label={"Speed"}

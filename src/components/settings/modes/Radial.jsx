@@ -21,6 +21,7 @@ const Radial = () => {
                 max={100}
                 step={1}
                 onChange={changeSpeed}
+                color={gradient.speed > 20 ? "auto" : "red"}
             />
             <ColorsList />
         </>
