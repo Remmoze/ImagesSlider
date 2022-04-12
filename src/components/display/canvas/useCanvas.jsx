@@ -16,6 +16,7 @@ const useCanvas = (draw) => {
 
     const canvasRef = useRef(null);
     const config = useSelector((storage) => storage.config);
+    const storage = useSelector((storage) => storage);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -31,7 +32,7 @@ const useCanvas = (draw) => {
 
         const render = () => {
             frameCount++;
-            draw(context, frameCount, config, displayImage);
+            draw(context, frameCount, storage, displayImage);
             animationFrameId = window.requestAnimationFrame(render);
         };
         render();
@@ -39,7 +40,7 @@ const useCanvas = (draw) => {
         return () => {
             window.cancelAnimationFrame(animationFrameId);
         };
-    }, [draw, config, displayImage]);
+    }, [draw, config, displayImage, storage]);
 
     return canvasRef;
 };

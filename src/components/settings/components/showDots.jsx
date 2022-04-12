@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Checkbox, Grid } from "@mui/material";
 
-import { setShowDots } from "../../../redux/configSlice";
+import { setShowDots } from "../../../redux/dotsSlice";
 
 const changeShow = (show, setShow, dispatch) => {
     setShow(show);
-    console.log(setShowDots(show));
-    dispatch({ type: "config/setShowDots", payload: show });
-    //dispatch(setShowDots(show));
+    dispatch(setShowDots(show));
 };
 
 const ShowDots = () => {
-    const config = useSelector((storage) => storage.config);
+    const dots = useSelector((storage) => storage.dots);
     const dispatch = useDispatch();
-    const [show, setShow] = useState(config.showDots);
+    const [show, setShow] = useState(dots.showDots);
     return (
         <>
             <Grid item>

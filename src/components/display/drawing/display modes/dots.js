@@ -4,24 +4,24 @@ let Dots = [];
 let maxDistance = 120;
 let lastSpeed = 0;
 
-const initDots = (context, config) => {
+const initDots = (context, dots) => {
     Dots = [];
-    maxDistance = config.dotsMaxDistance;
+    maxDistance = dots.maxDistance;
 
-    for (let i = 0; i < config.dotsCount; i++) {
+    for (let i = 0; i < dots.count; i++) {
         Dots.push(createDot(context.canvas));
     }
 
     // speed is broken
-    Dots.map((dot) => dot.setVelocity(config.speed));
-    lastSpeed = config.speed;
+    Dots.map((dot) => dot.setVelocity(dots.speed));
+    lastSpeed = dots.speed;
 };
 
-const updateCount = (context, config) => {
-    if (Dots.length > config.dotsCount) {
-        Dots.length = config.dotsCount;
+const updateCount = (context, dots) => {
+    if (Dots.length > dots.count) {
+        Dots.length = dots.count;
     } else {
-        for (let i = Dots.length; i < config.dotsCount; i++) {
+        for (let i = Dots.length; i < dots.count; i++) {
             Dots.push(createDot(context.canvas));
         }
     }
@@ -54,9 +54,9 @@ const Connect = (context) => {
     }
 };
 
-const updateDots = (context, config) => {
-    if (Dots.length !== config.dotsCount) updateCount(context, config);
-    if (lastSpeed !== config.speed) initDots(context, config);
+const updateDots = (context, dots) => {
+    if (Dots.length !== dots.count) updateCount(context, dots);
+    if (lastSpeed !== dots.speed) initDots(context, dots);
     Dots.map((dot) => dot.update(context.canvas));
 
     context.fillStyle = "#000";
@@ -65,7 +65,7 @@ const updateDots = (context, config) => {
     context.fillStyle = "#000000";
     context.lineWidth = 2;
     Connect(context);
-    if (config.showDots) Dots.map((dot) => dot.render(context));
+    if (dots.showDots) Dots.map((dot) => dot.render(context));
 };
 
 export { updateDots };

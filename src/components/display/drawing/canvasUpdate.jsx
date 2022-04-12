@@ -67,33 +67,33 @@ const getDrawType = (mode) => {
     }
 };
 
-const drawUpdate = (context, config) => {
+const drawUpdate = (context, storage) => {
     const canvas = context.canvas;
-    const type = getDrawType(config.mode);
+    const type = getDrawType(storage.config.mode);
     if (type === "fillstyle") {
         context.fillRect(0, 0, canvas.width, canvas.height);
     }
-    if (config.mode === "dots") {
-        updateDots(context, config);
+    if (storage.config.mode === "dots") {
+        updateDots(context, storage.dots);
     }
 };
 
-const CanvasUpdate = (context, frameCount, config, image) => {
+const CanvasUpdate = (context, frameCount, storage, image) => {
     drawDefault(context);
 
-    const type = getDrawType(config.mode);
+    const type = getDrawType(storage.config.mode);
     if (type === "fillstyle") {
-        let fillStyle = createFillStyle(context, config, frameCount, image);
+        let fillStyle = createFillStyle(context, storage.config, frameCount, image);
         if (fillStyle !== null) {
             context.fillStyle = fillStyle;
-            drawUpdate(context, config);
+            drawUpdate(context, storage);
         }
     }
     if (type === "update") {
-        drawUpdate(context, config);
+        drawUpdate(context, storage);
     }
 
-    if (config.debug) {
+    if (storage.config.debug) {
         drawDebug(context, frameCount);
     }
 };

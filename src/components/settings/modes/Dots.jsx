@@ -1,11 +1,12 @@
-import Speed from "../common/speed";
-import Count from "../common/count";
-import ShowDots from "../common/showDots";
+//import Speed from "../common/speed";
+
+import Count from "../components/count";
+import ShowDots from "../components/showDots";
 
 const Dots = {
     name: "dots",
     displayName: "Dots",
-    children: [<Speed key={"DotsSpeed"} />, <Count key={"DotsCount"} />, <ShowDots key={"DotsShow"} />],
+    children: [<Count key={"DotsCount"} />, <ShowDots key={"DotsShow"} />],
 };
 
 export default Dots;
