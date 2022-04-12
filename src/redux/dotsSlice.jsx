@@ -7,7 +7,7 @@ const dotsSlice = createSlice({
         count: 100,
         maxDistance: 120,
         showDots: true,
-        curved: false,
+        curve: 0,
     },
     reducers: {
         setSpeed: (state, { payload }) => {
@@ -23,12 +23,12 @@ const dotsSlice = createSlice({
         setMaxDistance: (state, { payload }) => {
             state.maxDistance = payload;
         },
-        setCurved: (state, { payload }) => {
-            state.curved = payload;
+        setCurve: (state, { payload }) => {
+            state.curve = payload;
         },
     },
 });
 
-export const { setSpeed, setCount, setShowDots, setMaxDistance, setCurved } = dotsSlice.actions;
+export const { setSpeed, setCount, setShowDots, setMaxDistance, setCurve } = dotsSlice.actions;
 
 export default dotsSlice.reducer;

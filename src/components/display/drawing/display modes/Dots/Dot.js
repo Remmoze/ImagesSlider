@@ -16,8 +16,8 @@ class Dot {
         this.vel.y = speed * Math.sin(this.angle);
     }
 
-    getBezier() {
-        return [this.pos.x + 100 * Math.cos(this.angle), this.pos.y + 100 * Math.sin(this.angle)];
+    getBezier(curve) {
+        return [this.pos.x + curve * Math.cos(this.angle), this.pos.y + curve * Math.sin(this.angle)];
     }
 
     update(canvas) {
