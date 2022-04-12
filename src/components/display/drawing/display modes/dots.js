@@ -1,7 +1,6 @@
 import { createDot } from "./Dots/Dot";
 
 let Dots = [];
-let maxDistance = 120;
 let lastSpeed = 0;
 
 const updateCount = (context, dots) => {
@@ -14,7 +13,7 @@ const updateCount = (context, dots) => {
     }
 };
 
-const Connect = (context) => {
+const Connect = (context, maxDistance) => {
     for (let i = 0; i < Dots.length - 1; i++) {
         let point1 = Dots[i];
         for (let j = i + 1; j < Dots.length; j++) {
@@ -54,7 +53,7 @@ const updateDots = (context, dots) => {
 
     context.fillStyle = "#000000";
     context.lineWidth = 2;
-    Connect(context);
+    Connect(context, dots.maxDistance);
     if (dots.showDots) Dots.map((dot) => dot.render(context));
 };
 

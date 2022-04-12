@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setCount, setShowDots, setSpeed } from "../../../redux/dotsSlice";
+import { setCount, setShowDots, setSpeed, setMaxDistance } from "../../../redux/dotsSlice";
 
 import SettingsSlider from "../components/settingsSlider";
 import SettingsCheckbox from "../components/settingsCheckbox";
@@ -7,19 +7,6 @@ import SettingsCheckbox from "../components/settingsCheckbox";
 const Dots = () => {
     const dots = useSelector((storage) => storage.dots);
     const dispatch = useDispatch();
-
-    const changeCount = (newValue) => {
-        dispatch(setCount(newValue));
-    };
-
-    const changeShowDots = (newValue) => {
-        dispatch(setShowDots(newValue));
-    };
-
-    const changeSpeed = (newValue) => {
-        dispatch(setSpeed(newValue));
-    };
-
     return (
         <>
             <SettingsSlider
@@ -28,7 +15,7 @@ const Dots = () => {
                 min={1}
                 max={50}
                 step={1}
-                onChange={changeSpeed}
+                onChange={(value) => dispatch(setSpeed(value))}
             />
             <SettingsSlider
                 defaultValue={dots.count}
@@ -36,9 +23,21 @@ const Dots = () => {
                 min={0}
                 max={250}
                 step={1}
-                onChange={changeCount}
+                onChange={(value) => dispatch(setCount(value))}
             />
-            <SettingsCheckbox defaultValue={dots.showDots} label={"Show Dots"} onChange={changeShowDots} />
+            <SettingsSlider
+                defaultValue={dots.maxDistance}
+                label={"Max distance - " + dots.maxDistance + " pixels"}
+                min={100}
+                max={200}
+                step={1}
+                onChange={(value) => dispatch(setMaxDistance(value))}
+            />
+            <SettingsCheckbox
+                defaultValue={dots.showDots}
+                label={"Show Dots"}
+                onChange={(value) => dispatch(setShowDots(value))}
+            />
         </>
     );
 };
