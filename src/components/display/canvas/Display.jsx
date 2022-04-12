@@ -6,7 +6,7 @@ import ImageDisplay from "./ImageDisplay";
 
 const Display = () => {
     const mode = useSelector((storage) => storage.config.mode);
-    if (mode === "image") return <ImageDisplay />;
+    if (mode === "Image") return <ImageDisplay />;
     return <Canvas />;
 };
 

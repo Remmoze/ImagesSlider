@@ -4,39 +4,7 @@ import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 import { setMode } from "../../redux/configSlice";
 
-import Gradient from "./modes/Gradient";
-import ImageSlider from "./modes/ImageSlider";
-import Radial from "./modes/Radial";
-import Dots from "./modes/Dots";
-import Blinking from "./modes/Blinking";
-
-let modes = [
-    {
-        name: "dots",
-        displayName: "Dots",
-        component: <Dots />,
-    },
-    {
-        name: "blinking",
-        displayName: "Blinking",
-        component: <Blinking />,
-    },
-    {
-        name: "gradient",
-        displayName: "Gradient",
-        component: <Gradient />,
-    },
-    {
-        name: "image",
-        displayName: "Image",
-        component: <ImageSlider />,
-    },
-    {
-        name: "radial",
-        displayName: "Radial",
-        component: <Radial />,
-    },
-];
+import Modes from "./modes/modesMenu";
 
 const Mode = () => {
     const config = useSelector((storage) => storage.config);
@@ -49,15 +17,15 @@ const Mode = () => {
                 <FormControl fullWidth>
                     <InputLabel>Display mode</InputLabel>
                     <Select value={config.mode} label="Display mode" onChange={changeMode}>
-                        {modes.map((mode) => (
+                        {Modes.map((mode) => (
                             <MenuItem key={mode.name} value={mode.name}>
-                                {mode.displayName}
+                                {mode.name}
                             </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
             </Grid>
-            {modes.find((mode) => mode.name === config.mode).component}
+            {Modes.find((mode) => mode.name === config.mode).component}
         </>
     );
 };

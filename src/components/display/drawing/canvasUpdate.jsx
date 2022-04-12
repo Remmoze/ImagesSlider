@@ -32,13 +32,13 @@ const drawDefault = (context) => {
 
 const createFillStyle = (context, storage, frameCount, image) => {
     switch (storage.config.mode) {
-        case "gradient":
+        case "Gradient":
             return createGradient(context, storage.gradient, frameCount);
-        case "blinking":
+        case "Blinking":
             return createBlinking(context, storage.gradient, frameCount);
-        case "radial":
+        case "Radial":
             return createRadial(context, storage.gradient, frameCount);
-        case "image": {
+        case "Image": {
             if (image !== null) return createImageSlider(context, image);
             return null;
         }
@@ -50,14 +50,14 @@ const createFillStyle = (context, storage, frameCount, image) => {
 
 const getDrawType = (mode) => {
     switch (mode) {
-        case "gradient":
-        case "blinking":
-        case "radial":
-        case "image": {
+        case "Gradient":
+        case "Blinking":
+        case "Radial":
+        case "Image": {
             return "fillstyle";
         }
 
-        case "dots": {
+        case "Dots": {
             return "update";
         }
 
@@ -73,7 +73,7 @@ const drawUpdate = (context, storage) => {
     if (type === "fillstyle") {
         context.fillRect(0, 0, canvas.width, canvas.height);
     }
-    if (storage.config.mode === "dots") {
+    if (storage.config.mode === "Dots") {
         updateDots(context, storage.dots);
     }
 };

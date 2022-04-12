@@ -4,7 +4,7 @@ const configSlice = createSlice({
     name: "config",
     initialState: {
         debug: false,
-        mode: "dots",
+        mode: "Dots",
         imageUrl: null,
     },
     reducers: {
