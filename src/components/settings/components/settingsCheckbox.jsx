@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Checkbox, Grid } from "@mui/material";
+import { Checkbox, Grid, Typography } from "@mui/material";
 
 const SettingsCheckbox = ({ defaultValue, label, onChange }) => {
     const [checked, setChecked] = useState(defaultValue);
     return (
-        <Grid item>
+        <Grid mt={-1} ml={-1.5} item>
             <Checkbox
                 checked={checked}
                 onChange={(e, value) => {
@@ -12,7 +12,9 @@ const SettingsCheckbox = ({ defaultValue, label, onChange }) => {
                     onChange(value);
                 }}
             />
-            {label}
+            <Typography mt={1} sx={{ display: "inline" }}>
+                {label}
+            </Typography>
         </Grid>
     );
 };
