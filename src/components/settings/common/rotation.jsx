@@ -14,12 +14,12 @@ const changeRotation = (rotation, setRotationValue, dispatch) => {
 };
 
 const Rotation = () => {
-    const config = useSelector((storage) => storage.config);
+    const gradient = useSelector((storage) => storage.gradient);
     const dispatch = useDispatch();
-    const [rotationValue, setRotationValue] = useState(config.rotation);
+    const [rotationValue, setRotationValue] = useState(gradient.rotation);
     return (
         <>
-            <Grid item>Rotation - {getRotationLabel(config.rotation)}</Grid>
+            <Grid item>Rotation - {getRotationLabel(gradient.rotation)}</Grid>
             <Grid item>
                 <Slider
                     onChange={(e, value) => changeRotation(value, setRotationValue, dispatch)}

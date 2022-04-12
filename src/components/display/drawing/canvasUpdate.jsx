@@ -83,7 +83,7 @@ const CanvasUpdate = (context, frameCount, storage, image) => {
 
     const type = getDrawType(storage.config.mode);
     if (type === "fillstyle") {
-        let fillStyle = createFillStyle(context, storage.config, frameCount, image);
+        let fillStyle = createFillStyle(context, storage, frameCount, image);
         if (fillStyle !== null) {
             context.fillStyle = fillStyle;
             drawUpdate(context, storage);

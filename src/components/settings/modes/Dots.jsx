@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setCount, setShowDots } from "../../../redux/dotsSlice";
+import { setCount, setShowDots, setSpeed } from "../../../redux/dotsSlice";
 
 import SettingsSlider from "../components/settingsSlider";
 import SettingsCheckbox from "../components/settingsCheckbox";
@@ -16,8 +16,20 @@ const Dots = () => {
         dispatch(setShowDots(newValue));
     };
 
+    const changeSpeed = (newValue) => {
+        dispatch(setSpeed(newValue));
+    };
+
     return (
         <>
+            <SettingsSlider
+                defaultValue={dots.speed}
+                label={"Speed - " + dots.speed}
+                min={1}
+                max={100}
+                step={1}
+                onChange={changeSpeed}
+            />
             <SettingsSlider
                 defaultValue={dots.count}
                 label={"Count - " + dots.count}

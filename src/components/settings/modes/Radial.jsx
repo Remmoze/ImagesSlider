@@ -1,20 +1,30 @@
 import ColorsList from "../gradient/colorsAdder";
-import Speed from "../common/speed";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-// const Radial = {
-//     name: "radial",
-//     displayName: "Radial",
-//     children: [<Speed key={"RadialSpeed"} />, <ColorsList key={"RadialColorsList"} />],
-// };
-
-// export default Radial;
+import SettingsSlider from "../components/settingsSlider";
+import { setSpeed } from "../../../redux/canvasGradientSlice";
 
 const Radial = () => {
     const gradient = useSelector((store) => store.gradient);
     const dispatch = useDispatch();
 
-    return <></>;
+    const changeSpeed = (newValue) => {
+        dispatch(setSpeed(newValue));
+    };
+
+    return (
+        <>
+            <SettingsSlider
+                defaultValue={gradient.speed}
+                label={"Speed"}
+                min={1}
+                max={100}
+                step={1}
+                onChange={changeSpeed}
+            />
+            <ColorsList />
+        </>
+    );
 };
 
 export default Radial;

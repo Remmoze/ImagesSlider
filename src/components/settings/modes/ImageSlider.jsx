@@ -1,7 +1,9 @@
 import FileUploader from "../imageSlider/fileUploader";
-import Speed from "../common/speed";
-import Rotation from "../common/rotation";
 import { useSelector, useDispatch } from "react-redux";
+
+import SettingsSlider from "../components/settingsSlider";
+import { setSpeed } from "../../../redux/canvasGradientSlice";
+import Rotation from "../common/rotation";
 
 // const ImageSlider = {
 //     name: "image",
@@ -19,7 +21,24 @@ const ImageSlider = () => {
     const gradient = useSelector((store) => store.gradient);
     const dispatch = useDispatch();
 
-    return <></>;
+    const changeSpeed = (newValue) => {
+        dispatch(setSpeed(newValue));
+    };
+
+    return (
+        <>
+            <SettingsSlider
+                defaultValue={gradient.speed}
+                label={"Speed"}
+                min={1}
+                max={100}
+                step={1}
+                onChange={changeSpeed}
+            />
+            <Rotation />
+            <FileUploader />
+        </>
+    );
 };
 
 export default ImageSlider;

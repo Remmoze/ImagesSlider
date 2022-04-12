@@ -1,25 +1,32 @@
-import Rotation from "../common/rotation";
-import Speed from "../common/speed";
 import ColorsList from "../gradient/colorsAdder";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-// const Gradient = {
-//     name: "gradient",
-//     displayName: "Gradient",
-//     children: [
-//         <Speed key={"GradientSpeed"} />,
-//         <Rotation key={"GradientRotation"} />,
-//         <ColorsList key={"GradientColorsList"} />,
-//     ],
-// };
-
-// export default Gradient;
+import SettingsSlider from "../components/settingsSlider";
+import { setSpeed } from "../../../redux/canvasGradientSlice";
+import Rotation from "../common/rotation";
 
 const Gradient = () => {
     const gradient = useSelector((store) => store.gradient);
     const dispatch = useDispatch();
 
-    return <></>;
+    const changeSpeed = (newValue) => {
+        dispatch(setSpeed(newValue));
+    };
+
+    return (
+        <>
+            <SettingsSlider
+                defaultValue={gradient.speed}
+                label={"Speed"}
+                min={1}
+                max={100}
+                step={1}
+                onChange={changeSpeed}
+            />
+            <Rotation />
+            <ColorsList />
+        </>
+    );
 };
 
 export default Gradient;

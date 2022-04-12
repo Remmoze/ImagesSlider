@@ -22,7 +22,7 @@ const RandomColor = () => {
 };
 
 const ColorsList = () => {
-    const config = useSelector((storage) => storage.config);
+    const gradient = useSelector((storage) => storage.gradient);
     const dispatch = useDispatch();
 
     return (
@@ -30,17 +30,20 @@ const ColorsList = () => {
             <Grid container direction="row" alignItems="center">
                 <Grid item>Colors</Grid>
                 <Grid item>
-                    <IconButton disabled={config.colors.length >= 9} onClick={() => dispatch(addColor(RandomColor()))}>
+                    <IconButton
+                        disabled={gradient.colors.length >= 9}
+                        onClick={() => dispatch(addColor(RandomColor()))}
+                    >
                         <AddIcon />
                     </IconButton>
                 </Grid>
             </Grid>
             <List sx={{ width: "100%", bgcolor: "#00000050", borderRadius: 3 }}>
                 <TransitionGroup>
-                    {config.colors.map((color, index) => (
+                    {gradient.colors.map((color, index) => (
                         <Collapse key={color}>
                             {index !== 0 && <Divider />}
-                            <ColorItem blockDelete={config.colors.length < 2} color={color} index={index}></ColorItem>
+                            <ColorItem blockDelete={gradient.colors.length < 2} color={color} index={index}></ColorItem>
                         </Collapse>
                     ))}
                 </TransitionGroup>
