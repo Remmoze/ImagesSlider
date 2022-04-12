@@ -17,7 +17,9 @@ class Dot {
     }
 
     getBezier(curve) {
-        return [this.pos.x + curve * Math.cos(this.angle), this.pos.y + curve * Math.sin(this.angle)];
+        let x = this.pos.x + curve * Math.cos(this.angle);
+        let y = this.pos.y + curve * Math.sin(this.angle);
+        return [x, y];
     }
 
     update(canvas) {

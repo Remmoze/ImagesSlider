@@ -37,8 +37,8 @@ const Dots = () => {
                 defaultValue={dots.curve}
                 label={"Curvature"}
                 min={0}
-                max={500}
-                step={10}
+                max={300}
+                step={1}
                 onChange={(value) => dispatch(setCurve(value))}
             />
             <SettingsCheckbox

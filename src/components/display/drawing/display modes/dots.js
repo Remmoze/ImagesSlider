@@ -33,14 +33,14 @@ const Connect = (context, maxDistance, curve) => {
                 context.lineCap = "round";
                 context.beginPath();
                 context.moveTo(point1.pos.x, point1.pos.y);
-                if (curve > 0)
+                if (curve === 0) context.lineTo(point2.pos.x, point2.pos.y);
+                else
                     context.bezierCurveTo(
-                        ...point1.getBezier(curve),
-                        ...point2.getBezier(curve),
+                        ...point1.getBezier((distance / maxDistance) * curve),
+                        ...point2.getBezier((distance / maxDistance) * curve),
                         point2.pos.x,
                         point2.pos.y
                     );
-                else context.lineTo(point2.pos.x, point2.pos.y);
                 context.stroke();
             }
         }
