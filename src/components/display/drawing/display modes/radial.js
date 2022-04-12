@@ -14,7 +14,7 @@ const getRadialGradient = (context, radius) => {
 
 const createRadial = (context, storeGradient, frameCount) => {
     let canvas = context.canvas;
-    const radius = getRadius(canvas, storeGradient.colors, "radial");
+    const radius = getRadius(canvas, storeGradient.colors, "Radial");
     const gradient = getRadialGradient(context, radius);
 
     return addColorStops(gradient, getSpeed(frameCount, storeGradient.speed), storeGradient.colors);

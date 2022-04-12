@@ -11,6 +11,7 @@ const createNewImage = (newUrl) => {
     });
 };
 
+let frameCount = 0;
 const useCanvas = (draw) => {
     const [displayImage, setdisplayImage] = useState(null);
 
@@ -21,7 +22,6 @@ const useCanvas = (draw) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d");
-        let frameCount = 0;
         let animationFrameId;
 
         if (config.imageUrl !== null && (displayImage === null || config.imageUrl !== displayImage.src)) {

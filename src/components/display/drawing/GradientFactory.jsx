@@ -14,10 +14,10 @@ const getRadius = (canvas, colors, mode) => {
     let colorStopWidth = getColorStopWidth(realRadius, colors);
 
     let radius = 0;
-    if (mode === "blinking") {
+    if (mode === "Blinking") {
         // set circumscribed circle's radius to a color stop
         radius = realRadius * colorStopWidth;
-    } else if (mode === "gradient" || mode === "radial") {
+    } else if (mode === "Gradient" || mode === "Radial") {
         //increase circumscribed circle's radius by a color stop
         radius = realRadius + colorStopWidth;
     }
