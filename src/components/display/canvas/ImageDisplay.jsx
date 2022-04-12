@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import useTimer from "./useTimer";
 
 const ImageDisplay = () => {
-    const speed = useSelector((storage) => storage.config.speed);
+    const speed = useSelector((storage) => storage.gradient.speed);
     const [winWidth, winHeight] = useWindowSize();
     const [offset, setOffset] = useState(0);
 

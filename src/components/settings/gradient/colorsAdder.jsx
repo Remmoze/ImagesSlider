@@ -7,7 +7,7 @@ import { Grid, IconButton } from "@mui/material";
 import { List, Divider } from "@mui/material";
 import { Collapse } from "@mui/material";
 
-import { addColor } from "../../../redux/configSlice";
+import { addColor } from "../../../redux/canvasGradientSlice";
 import ColorItem from "./colorItem";
 
 import { TransitionGroup } from "react-transition-group";

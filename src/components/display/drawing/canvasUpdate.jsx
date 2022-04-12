@@ -30,14 +30,14 @@ const drawDefault = (context) => {
     context.fillText("No input", canvas.width / 2, canvas.height / 2);
 };
 
-const createFillStyle = (context, config, frameCount, image) => {
-    switch (config.mode) {
+const createFillStyle = (context, storage, frameCount, image) => {
+    switch (storage.config.mode) {
         case "gradient":
-            return createGradient(context, config, frameCount);
+            return createGradient(context, storage.gradient, frameCount);
         case "blinking":
-            return createBlinking(context, config, frameCount);
+            return createBlinking(context, storage.gradient, frameCount);
         case "radial":
-            return createRadial(context, config, frameCount);
+            return createRadial(context, storage.gradient, frameCount);
         case "image": {
             if (image !== null) return createImageSlider(context, image);
             return null;

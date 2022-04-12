@@ -45,12 +45,12 @@ const addColorStops = (gradient, speed, colors) => {
     return gradient;
 };
 
-const createGradientType = (context, config, frameCount, mode) => {
+const createGradientType = (context, storeGradient, frameCount, mode) => {
     let canvas = context.canvas;
-    const radius = getRadius(canvas, config.colors, mode);
-    const gradient = getLinearGradient(context, config.rotation, radius);
+    const radius = getRadius(canvas, storeGradient.colors, mode);
+    const gradient = getLinearGradient(context, storeGradient.rotation, radius);
 
-    return addColorStops(gradient, getSpeed(frameCount, config.speed), config.colors);
+    return addColorStops(gradient, getSpeed(frameCount, storeGradient.speed), storeGradient.colors);
 };
 
 export { createGradientType, addColorStops, getSpeed, getRadius };

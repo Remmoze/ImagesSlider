@@ -1,7 +1,7 @@
 import { createGradientType } from "../GradientFactory";
 
-const createBlinking = (context, config, frameCount) => {
-    return createGradientType(context, config, frameCount, "blinking");
+const createBlinking = (context, storeGradient, frameCount) => {
+    return createGradientType(context, storeGradient, frameCount, "blinking");
 };
 
 export { createBlinking };

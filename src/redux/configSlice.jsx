@@ -5,17 +5,6 @@ const configSlice = createSlice({
     initialState: {
         debug: false,
         mode: "dots",
-        speed: 100,
-        rotation: (Math.PI * 5) / 8, //radians
-        colors: [
-            "#FF0000", // Red
-            "#FFA500", // Orange
-            "#FFFF00", // Yellow
-            "#008000", // Green
-            "#0000FF", // Blue
-            "#4B0082", // Indigo
-            "#EE82EE", // Violet
-        ],
         imageUrl: null,
     },
     reducers: {
@@ -29,32 +18,12 @@ const configSlice = createSlice({
             https://stackoverflow.com/questions/21835739/smooth-color-transition-algorithm
         */
 
-        setColors: (state, { payload }) => {
-            state.colors = payload;
-        },
-        addColor: (state, { payload }) => {
-            state.colors.push(payload);
-        },
-        setColorByIndex: (state, { payload }) => {
-            state.colors[payload.index] = payload.color;
-        },
-        deleteColorByIndex: (state, { payload }) => {
-            state.colors.splice(payload, 1);
-        },
-
         setMode: (state, { payload }) => {
             state.mode = payload;
-        },
-        setSpeed: (state, { payload }) => {
-            state.speed = payload;
-        },
-        setRotation: (state, { payload }) => {
-            state.rotation = payload;
         },
     },
 });
 
-export const { setImageUrl, setMode, setSpeed, setRotation, addColor, setColorByIndex, deleteColorByIndex } =
-    configSlice.actions;
+export const { setImageUrl, setMode } = configSlice.actions;
 
 export default configSlice.reducer;

@@ -4,18 +4,37 @@ import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 import { setMode } from "../../redux/configSlice";
 
-import Blinking from "./modes/Blinking";
 import Gradient from "./modes/Gradient";
 import ImageSlider from "./modes/ImageSlider";
 import Radial from "./modes/Radial";
-
 import Dots from "./modes/Dots";
+import Blinking from "./modes/Blinking";
 
 let modes = [
     {
         name: "dots",
         displayName: "Dots",
         component: <Dots />,
+    },
+    {
+        name: "blinking",
+        displayName: "Blinking",
+        component: <Blinking />,
+    },
+    {
+        name: "gradient",
+        displayName: "Gradient",
+        component: <Gradient />,
+    },
+    {
+        name: "image",
+        displayName: "Image",
+        component: <ImageSlider />,
+    },
+    {
+        name: "radial",
+        displayName: "Radial",
+        component: <Radial />,
     },
 ];
 
