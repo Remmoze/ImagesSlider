@@ -26,14 +26,14 @@ const Dots = () => {
                 defaultValue={dots.speed}
                 label={"Speed - " + dots.speed}
                 min={1}
-                max={100}
+                max={50}
                 step={1}
                 onChange={changeSpeed}
             />
             <SettingsSlider
                 defaultValue={dots.count}
                 label={"Count - " + dots.count}
-                min={1}
+                min={0}
                 max={250}
                 step={1}
                 onChange={changeCount}

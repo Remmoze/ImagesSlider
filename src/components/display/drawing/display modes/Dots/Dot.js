@@ -3,14 +3,17 @@ import Vector2 from "./Vector2";
 class Dot {
     constructor(x, y, color) {
         this.pos = new Vector2(x, y);
-        this.vel = new Vector2(Math.random() * 4 - 2, Math.random() * 4 - 2);
-
+        this.vel = new Vector2(0, 0);
+        this.angle = Math.random() * Math.PI * 2;
+        this.setVelocity(50);
         this.color = color || "#000000";
     }
 
+    // speed - pixels per second
     setVelocity(speed) {
-        let newSpeed = (100 - speed) / 90;
-        this.vel = new Vector2(Math.random() * 4 - 2, Math.random() * 4 - 2);
+        speed /= 1000 / 60;
+        this.vel.x = speed * Math.cos(this.angle);
+        this.vel.y = speed * Math.sin(this.angle);
     }
 
     update(canvas) {
@@ -28,15 +31,16 @@ class Dot {
 }
 
 function hsvToRgb(h, s, v) {
-    var r, g, b;
+    let r, g, b;
 
-    var i = Math.floor(h * 6);
-    var f = h * 6 - i;
-    var p = v * (1 - s);
-    var q = v * (1 - f * s);
-    var t = v * (1 - (1 - f) * s);
+    let i = Math.floor(h * 6);
+    let f = h * 6 - i;
+    let p = v * (1 - s);
+    let q = v * (1 - f * s);
+    let t = v * (1 - (1 - f) * s);
 
     switch (i % 6) {
+        default:
         case 0: {
             r = v;
             g = t;

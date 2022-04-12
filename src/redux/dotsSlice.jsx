@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const dotsSlice = createSlice({
     name: "dots",
     initialState: {
-        speed: 100,
+        speed: 50,
         count: 100,
         maxDistance: 120,
         showDots: true,
