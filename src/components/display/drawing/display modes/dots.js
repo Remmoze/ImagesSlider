@@ -13,7 +13,7 @@ const updateCount = (context, dots) => {
     }
 };
 
-const Connect = (context, maxDistance) => {
+const Connect = (context, maxDistance, curved) => {
     for (let i = 0; i < Dots.length - 1; i++) {
         let point1 = Dots[i];
         for (let j = i + 1; j < Dots.length; j++) {
@@ -33,7 +33,9 @@ const Connect = (context, maxDistance) => {
                 context.lineCap = "round";
                 context.beginPath();
                 context.moveTo(point1.pos.x, point1.pos.y);
-                context.lineTo(point2.pos.x, point2.pos.y);
+                if (curved)
+                    context.bezierCurveTo(...point1.getBezier(), ...point2.getBezier(), point2.pos.x, point2.pos.y);
+                else context.lineTo(point2.pos.x, point2.pos.y);
                 context.stroke();
             }
         }
@@ -53,7 +55,7 @@ const updateDots = (context, dots) => {
 
     context.fillStyle = "#000000";
     context.lineWidth = 2;
-    Connect(context, dots.maxDistance);
+    Connect(context, dots.maxDistance, dots.curved);
     if (dots.showDots) Dots.map((dot) => dot.render(context));
 };
 

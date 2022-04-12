@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setCount, setShowDots, setSpeed, setMaxDistance } from "../../../redux/dotsSlice";
+import { setCount, setShowDots, setSpeed, setMaxDistance, setCurved } from "../../../redux/dotsSlice";
 
 import SettingsSlider from "../components/settingsSlider";
 import SettingsCheckbox from "../components/settingsCheckbox";
@@ -37,6 +37,11 @@ const Dots = () => {
                 defaultValue={dots.showDots}
                 label={"Show Dots"}
                 onChange={(value) => dispatch(setShowDots(value))}
+            />
+            <SettingsCheckbox
+                defaultValue={dots.curved}
+                label={"Curved"}
+                onChange={(value) => dispatch(setCurved(value))}
             />
         </>
     );
