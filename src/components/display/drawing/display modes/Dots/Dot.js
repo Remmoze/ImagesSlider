@@ -24,6 +24,15 @@ class Dot {
 
     update(canvas) {
         this.pos.add(this.vel);
+        if (this.pos.x >= canvas.width || this.pos.x <= 0) {
+            this.vel.x *= -1;
+            this.pos.add(this.vel);
+        }
+        if (this.pos.y >= canvas.height || this.pos.y <= 0) {
+            this.vel.y *= -1;
+            this.pos.add(this.vel);
+        }
+
         this.pos.limit(canvas);
     }
 
