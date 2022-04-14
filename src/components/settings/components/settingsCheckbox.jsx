@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Checkbox, Grid, Typography } from "@mui/material";
 
 const SettingsCheckbox = ({ defaultValue, label, onChange }) => {

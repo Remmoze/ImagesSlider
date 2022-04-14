@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
+import { useSelector, useDispatch } from "react-redux";
 import { setMode } from "../../redux/configSlice";
+
+import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 import Modes from "./modes/modesMenu";
 

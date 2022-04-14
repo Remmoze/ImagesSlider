@@ -1,8 +1,7 @@
 import React from "react";
+
 import useWindowSize from "./windowSize";
-
 import useCanvas from "./useCanvas";
-
 import CanvasUpdate from "../drawing/canvasUpdate";
 
 const Canvas = () => {

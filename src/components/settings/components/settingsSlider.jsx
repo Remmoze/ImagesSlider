@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Grid, Slider } from "@mui/material";
 
 const SettingsSlider = ({ defaultValue, label, onChange, min, max, step, color }) => {

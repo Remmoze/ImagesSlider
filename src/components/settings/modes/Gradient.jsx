@@ -1,8 +1,8 @@
-import ColorsList from "../gradient/colorsAdder";
 import { useDispatch, useSelector } from "react-redux";
-
-import SettingsSlider from "../components/settingsSlider";
 import { setSpeed, setRotation } from "../../../redux/gradientSlice";
+
+import ColorsList from "../gradient/colorsAdder";
+import SettingsSlider from "../components/settingsSlider";
 
 const getRotationLabel = (angle) => {
     return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;

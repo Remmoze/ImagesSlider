@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Slide } from "@mui/material";
+
 import SettingsContainer from "./SettingsContainer";
 
 const SettingsOverlay = () => {

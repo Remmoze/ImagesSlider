@@ -1,8 +1,8 @@
-import ColorsList from "../gradient/colorsAdder";
 import { useDispatch, useSelector } from "react-redux";
+import { setSpeed } from "../../../redux/gradientSlice";
 
 import SettingsSlider from "../components/settingsSlider";
-import { setSpeed } from "../../../redux/gradientSlice";
+import ColorsList from "../gradient/colorsAdder";
 
 const Radial = () => {
     const gradient = useSelector((store) => store.gradient);

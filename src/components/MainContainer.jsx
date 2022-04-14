@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
+import { Checkbox } from "@mui/material";
+
 import { AnimatedSettingsOverlay } from "./settings/SettingsOverlay";
 import Display from "./display/canvas/Display";
-import { Checkbox } from "@mui/material";
 
 const MainContainer = () => {
     const [checked, setCheck] = useState(true);

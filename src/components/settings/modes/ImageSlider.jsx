@@ -1,9 +1,9 @@
-import FileUploader from "../imageSlider/fileUploader";
 import { useSelector, useDispatch } from "react-redux";
-
-import SettingsSlider from "../components/settingsSlider";
 import { setSpeed, setRotation } from "../../../redux/gradientSlice";
 import { Typography } from "@mui/material";
+
+import FileUploader from "../imageSlider/fileUploader";
+import SettingsSlider from "../components/settingsSlider";
 
 const getRotationLabel = (angle) => {
     return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;

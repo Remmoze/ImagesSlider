@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import useWindowSize from "./windowSize";
+import { useSelector } from "react-redux";
+
 import { Box } from "@mui/system";
 
-import Image from "../../../content/city.jpg";
-import { useSelector } from "react-redux";
+import useWindowSize from "./windowSize";
 import useTimer from "./useTimer";
+
+import Image from "../../../content/city.jpg";
 
 const ImageDisplay = () => {
     const speed = useSelector((storage) => storage.gradient.speed);

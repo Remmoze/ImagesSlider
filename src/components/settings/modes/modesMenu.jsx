@@ -1,5 +1,3 @@
-import React from "react";
-
 import Gradient from "./Gradient";
 import ImageSlider from "./ImageSlider";
 import Radial from "./Radial";

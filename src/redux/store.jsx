@@ -1,12 +1,13 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+
 import configReducer from "./configSlice";
-import dotsReducer from "./dotsSlice";
 import gradientSlice from "./gradientSlice";
+import dotsReducer from "./dotsSlice";
 
 const rootReducer = combineReducers({
     config: configReducer,
-    dots: dotsReducer,
     gradient: gradientSlice,
+    dots: dotsReducer,
 });
 
 const storage = configureStore({

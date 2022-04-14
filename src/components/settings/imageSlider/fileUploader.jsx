@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
+
 import { useDispatch } from "react-redux";
+import { setImageUrl } from "../../../redux/configSlice";
 
 import { Button } from "@mui/material";
-import { setImageUrl } from "../../../redux/configSlice";
 
 const loadFile = (image, dispatch, currentUrl, setCurrentUrl) => {
     if (currentUrl !== null) {

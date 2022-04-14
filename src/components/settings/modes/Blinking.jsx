@@ -1,8 +1,8 @@
-import ColorsList from "../gradient/colorsAdder";
 import { useDispatch, useSelector } from "react-redux";
-
-import SettingsSlider from "../components/settingsSlider";
 import { setSpeed } from "../../../redux/gradientSlice";
+
+import ColorsList from "../gradient/colorsAdder";
+import SettingsSlider from "../components/settingsSlider";
 
 const Blinking = () => {
     const gradient = useSelector((store) => store.gradient);

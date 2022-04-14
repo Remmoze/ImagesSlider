@@ -1,5 +1,8 @@
 import React from "react";
+import { TransitionGroup } from "react-transition-group";
+
 import { useSelector, useDispatch } from "react-redux";
+import { addColor } from "../../../redux/gradientSlice";
 
 import AddIcon from "@mui/icons-material/Add";
 
@@ -7,10 +10,7 @@ import { Grid, IconButton } from "@mui/material";
 import { List, Divider } from "@mui/material";
 import { Collapse } from "@mui/material";
 
-import { addColor } from "../../../redux/gradientSlice";
 import ColorItem from "./colorItem";
-
-import { TransitionGroup } from "react-transition-group";
 
 const RandomColor = () => {
     return (
