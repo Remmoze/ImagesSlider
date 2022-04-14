@@ -2,16 +2,15 @@ import ColorsList from "../gradient/colorsAdder";
 import { useDispatch, useSelector } from "react-redux";
 
 import SettingsSlider from "../components/settingsSlider";
-import { setSpeed } from "../../../redux/gradientSlice";
-import Rotation from "../common/rotation";
+import { setSpeed, setRotation } from "../../../redux/gradientSlice";
+
+const getRotationLabel = (angle) => {
+    return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;
+};
 
 const Gradient = () => {
     const gradient = useSelector((store) => store.gradient);
     const dispatch = useDispatch();
-
-    const changeSpeed = (newValue) => {
-        dispatch(setSpeed(newValue));
-    };
 
     return (
         <>
@@ -21,10 +20,17 @@ const Gradient = () => {
                 min={1}
                 max={100}
                 step={1}
-                onChange={changeSpeed}
+                onChange={(value) => dispatch(setSpeed(value))}
                 color={gradient.speed > 20 ? "auto" : "red"}
             />
-            <Rotation />
+            <SettingsSlider
+                defaultValue={gradient.rotation}
+                label={"Rotation - " + getRotationLabel(gradient.rotation)}
+                min={0}
+                max={Math.PI * 2}
+                step={0.01}
+                onChange={(value) => dispatch(setRotation(value))}
+            />
             <ColorsList />
         </>
     );

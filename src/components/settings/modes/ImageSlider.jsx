@@ -2,21 +2,12 @@ import FileUploader from "../imageSlider/fileUploader";
 import { useSelector, useDispatch } from "react-redux";
 
 import SettingsSlider from "../components/settingsSlider";
-import { setSpeed } from "../../../redux/gradientSlice";
-import Rotation from "../common/rotation";
+import { setSpeed, setRotation } from "../../../redux/gradientSlice";
 import { Typography } from "@mui/material";
 
-// const ImageSlider = {
-//     name: "image",
-//     displayName: "Image",
-//     children: [
-//         <Speed minVal={1} maxVal={200} key={"ImageSpeed"} />,
-//         <Rotation key={"ImageRotation"} />,
-//         <FileUploader key={"ImageFileUploader"} />,
-//     ],
-// };
-
-// export default ImageSlider;
+const getRotationLabel = (angle) => {
+    return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;
+};
 
 const ImageSlider = () => {
     const gradient = useSelector((store) => store.gradient);
@@ -39,7 +30,15 @@ const ImageSlider = () => {
                 step={1}
                 onChange={changeSpeed}
             />
-            <Rotation />
+
+            <SettingsSlider
+                defaultValue={gradient.rotation}
+                label={"Rotation - " + getRotationLabel(gradient.rotation)}
+                min={0}
+                max={Math.PI * 2}
+                step={0.01}
+                onChange={(value) => dispatch(setRotation(value))}
+            />
             <FileUploader />
         </>
     );
