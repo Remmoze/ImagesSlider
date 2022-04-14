@@ -14,7 +14,6 @@ const dotsSlice = createSlice({
             state.speed = payload;
         },
         setCount: (state, { payload }) => {
-            console.log(payload);
             state.count = payload;
         },
         setShowDots: (state, { payload }) => {

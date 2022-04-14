@@ -67,18 +67,24 @@ const getDrawType = (mode) => {
     }
 };
 
-const drawUpdate = (context, storage) => {
+const drawUpdate = (context, storage, needsUpdate = false) => {
     const canvas = context.canvas;
     const type = getDrawType(storage.config.mode);
     if (type === "fillstyle") {
         context.fillRect(0, 0, canvas.width, canvas.height);
     }
     if (storage.config.mode === "Dots") {
-        updateDots(context, storage.dots);
+        updateDots(context, storage.dots, needsUpdate);
     }
 };
 
+let prevDimensions = { width: 0, height: 0 };
 const CanvasUpdate = (context, frameCount, storage, image) => {
+    let needsUpdate = context.canvas.width !== prevDimensions.width || context.canvas.height !== prevDimensions.height;
+    if (needsUpdate) {
+        prevDimensions.width = context.canvas.width;
+        prevDimensions.height = context.canvas.height;
+    }
     drawDefault(context);
 
     const type = getDrawType(storage.config.mode);
@@ -90,7 +96,7 @@ const CanvasUpdate = (context, frameCount, storage, image) => {
         }
     }
     if (type === "update") {
-        drawUpdate(context, storage);
+        drawUpdate(context, storage, needsUpdate);
     }
 
     if (storage.config.debug) {
