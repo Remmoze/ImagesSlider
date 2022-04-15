@@ -18,7 +18,7 @@ class Cell {
 class Grid {
     constructor(canvas, maxDistance) {
         this.cells = [];
-        this.maxDistance = (maxDistance / 3) * Math.sqrt(2);
+        this.maxDistance = (maxDistance / 1.5) * Math.sqrt(2);
 
         this.rows = 0;
         this.columns = 0;
@@ -62,6 +62,29 @@ class Grid {
 
     getCoordsByIndex(index) {
         return { x: index % this.columns, y: Math.floor(index / this.columns) };
+    }
+
+    getCellNeighbours(index) {
+        /*
+            [ ][ ][*]
+            [ ][x][*]
+            [ ][*][*]
+        */
+        let { x, y } = this.getCoordsByIndex(index);
+        let cells = [];
+        let xBoundary = x + 1 < this.columns;
+        let yBoundary = y + 1 < this.rows;
+        if (xBoundary) {
+            cells.push(this.getCell(x + 1, y));
+            if (y > 0) cells.push(this.getCell(x + 1, y - 1));
+        }
+        if (yBoundary) {
+            cells.push(this.getCell(x, y + 1));
+        }
+        if (xBoundary && yBoundary) {
+            cells.push(this.getCell(x + 1, y + 1));
+        }
+        return cells;
     }
 
     update() {

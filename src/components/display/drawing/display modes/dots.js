@@ -61,7 +61,7 @@ const connectDots = (context, dot1, dot2, maxDistance, curve) => {
             But it is contained within previous cell.
             I have no idea how it is possible. Because points update their location
             and then cells check if all dots are still within their boundaries.
-            But it happens. Fixest itself next render.
+            But it happens. Fixes itself next render.
             I want to cry now.
         */
         return;
@@ -103,12 +103,25 @@ const connectDotsCurved = (context, dot1, dot2, distance, maxDistance, curve) =>
 };
 
 const connectNew = (context, maxDistance, curve) => {
-    for (const cell of grid.cells) {
-        for (let i = 0; i < cell.dots.length - 1; i++) {
-            let dot1 = cell.dots[i];
-            for (let j = i + 1; j < cell.dots.length; j++) {
-                let dot2 = cell.dots[j];
+    for (let i = 0; i < grid.cells.length; i++) {
+        const cell = grid.cells[i];
+        const neighbours = grid.getCellNeighbours(i);
+
+        for (let j = 0; j < cell.dots.length; j++) {
+            let dot1 = cell.dots[j];
+            // within itself
+            for (let k = j; k < cell.dots.length; k++) {
+                let dot2 = cell.dots[k];
                 connectDots(context, dot1, dot2, maxDistance, curve);
+            }
+
+            // outside itself
+            for (let k = 0; k < neighbours.length; k++) {
+                let neighbour = neighbours[k];
+                for (let z = 0; z < neighbour.dots.length; z++) {
+                    let dot2 = neighbour.dots[z];
+                    connectDots(context, dot1, dot2, maxDistance, curve);
+                }
             }
         }
     }
@@ -148,11 +161,13 @@ const updateDots = (context, dots, needsUpdate) => {
     grid.update();
 
     //grid
-    for (let i = 0; i < grid.cells.length; i++) {
-        let { x, y, width, height } = grid.cells[i];
-        context.lineWidth = 2;
-        context.strokeStyle = "red";
-        context.strokeRect(x, y, width, height);
+    if (dots.showGrid) {
+        for (let i = 0; i < grid.cells.length; i++) {
+            let { x, y, width, height } = grid.cells[i];
+            context.lineWidth = 2;
+            context.strokeStyle = "red";
+            context.strokeRect(x, y, width, height);
+        }
     }
 
     //lines
