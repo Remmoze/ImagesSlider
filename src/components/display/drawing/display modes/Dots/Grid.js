@@ -56,6 +56,11 @@ class Grid {
         }
     }
 
+    removeDot(dot) {
+        let cell = this.getCell(Math.floor(dot.pos.x / this.maxDistance), Math.floor(dot.pos.y / this.maxDistance));
+        cell.dots.splice(cell.dots.indexOf(dot), 1);
+    }
+
     getCell(x, y) {
         return this.cells[y * this.columns + x];
     }
