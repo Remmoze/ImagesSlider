@@ -49,8 +49,9 @@ const createGradientType = (context, storeGradient, frameCount, mode) => {
     let canvas = context.canvas;
     const radius = getRadius(canvas, storeGradient.colors, mode);
     const gradient = getLinearGradient(context, storeGradient.rotation, radius);
+    let speed = getSpeed(frameCount, storeGradient.speed);
 
-    return addColorStops(gradient, getSpeed(frameCount, storeGradient.speed), storeGradient.colors);
+    return addColorStops(gradient, speed, storeGradient.colors);
 };
 
 export { createGradientType, addColorStops, getSpeed, getRadius };
