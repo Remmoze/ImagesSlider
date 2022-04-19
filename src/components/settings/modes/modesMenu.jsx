@@ -1,5 +1,5 @@
 import Gradient from "./Gradient";
-import ImageSlider from "./ImageSlider";
+import Image from "./Image";
 import Radial from "./Radial";
 import Dots from "./Dots";
 import Blinking from "./Blinking";
@@ -19,7 +19,7 @@ const Modes = [
     },
     {
         name: "Image",
-        component: <ImageSlider />,
+        component: <Image />,
     },
     {
         name: "Radial",

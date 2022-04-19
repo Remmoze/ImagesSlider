@@ -1,9 +1,8 @@
 import { createGradient } from "./display modes/gradient";
 import { createBlinking } from "./display modes/blinking";
 import { createRadial } from "./display modes/radial";
-import { createImageSlider } from "./PatternFactory";
-
 import { updateDots } from "./display modes/dots";
+import { updateImage } from "./display modes/image";
 
 const drawDebug = (context, frameCount) => {
     const canvas = context.canvas;
@@ -38,10 +37,6 @@ const createFillStyle = (context, storage, frameCount, image) => {
             return createBlinking(context, storage.gradient, frameCount);
         case "Radial":
             return createRadial(context, storage.gradient, frameCount);
-        case "Image": {
-            if (image !== null) return createImageSlider(context, image);
-            return null;
-        }
         default: {
             return null;
         }
@@ -52,9 +47,12 @@ const getDrawType = (mode) => {
     switch (mode) {
         case "Gradient":
         case "Blinking":
-        case "Radial":
-        case "Image": {
+        case "Radial": {
             return "fillstyle";
+        }
+
+        case "Image": {
+            return "pattern";
         }
 
         case "Dots": {
@@ -76,6 +74,10 @@ const drawUpdate = (context, storage, needsUpdate = false) => {
     if (storage.config.mode === "Dots") {
         updateDots(context, storage.dots, needsUpdate);
     }
+
+    if (storage.config.mode === "Image") {
+        updateImage(context, storage.image);
+    }
 };
 
 let prevDimensions = { width: 0, height: 0 };
@@ -94,9 +96,10 @@ const CanvasUpdate = (context, frameCount, storage, image) => {
             context.fillStyle = fillStyle;
             drawUpdate(context, storage);
         }
-    }
-    if (type === "update") {
+    } else if (type === "update") {
         drawUpdate(context, storage, needsUpdate);
+    } else if (type === "pattern") {
+        drawUpdate(context, storage);
     }
 
     if (storage.config.debug) {
