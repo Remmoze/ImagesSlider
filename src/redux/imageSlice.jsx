@@ -4,6 +4,8 @@ const imageSlice = createSlice({
     name: "image",
     initialState: {
         imageUrl: null,
+        repeatX: true,
+        repeatY: false,
     },
     reducers: {
         setImageUrl: (state, { payload }) => {
