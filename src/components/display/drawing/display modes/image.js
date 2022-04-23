@@ -1,48 +1,50 @@
 let pattern = null;
-const updatePattern = (context, image, { repeatX, repeatY }) => {
-    let repeat = "no-repeat";
-    if (repeatX && repeatY) {
-        repeat = "repeat";
-    } else if (repeatX) {
-        repeat = "repeat-x";
-    } else if (repeatY) {
-        repeat = "repeat-y";
-    }
-    console.log("new pattern", repeat);
-    pattern = context.createPattern(image, repeat);
+const updatePattern = (context, image) => {
+    console.log("new pattern");
+    pattern = context.createPattern(image, "repeat");
 };
 
 let image = new Image();
 
-const draw = (context) => {
+let offsetX = 0;
+let offsetY = 0;
+const draw = (context, speed, moveX, moveY) => {
     context.fillStyle = "black";
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     context.fillStyle = pattern;
-    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+
+    if (moveX) {
+        offsetX += speed;
+        //offsetX %= context.canvas.width;
+    }
+    if (moveY) {
+        offsetY += speed;
+        //offsetY %= context.canvas.height;
+    }
+
+    context.translate(offsetX, offsetY);
+
+    console.log(offsetX, offsetY);
+    context.fillRect(-offsetX, -offsetY, context.canvas.width, context.canvas.height);
+
+    context.translate(-offsetX, -offsetY);
 };
 
 let prevURL = "";
-let prevX = true;
-let prevY = true;
-const updateImage = (context, { imageUrl, repeatX, repeatY }) => {
+const updateImage = (context, { imageUrl, speed, moveX, moveY }) => {
     if (imageUrl !== prevURL) {
         console.log("was here", imageUrl);
         // code
         image = new Image(); // could be removed?
         image.onload = () => {
-            updatePattern(context, image, { repeatX, repeatY });
+            updatePattern(context, image);
         };
         image.src = imageUrl;
         prevURL = imageUrl;
     }
 
-    if (repeatX !== prevX || repeatY !== prevY) {
-        prevX = repeatX;
-        prevY = repeatY;
-        updatePattern(context, image, { repeatX, repeatY });
-    }
     if (pattern !== null) {
-        draw(context);
+        draw(context, speed, moveX, moveY);
     }
 };
 

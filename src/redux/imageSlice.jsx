@@ -6,22 +6,27 @@ const imageSlice = createSlice({
     name: "image",
     initialState: {
         imageUrl: City,
-        repeatX: true,
-        repeatY: true,
+        speed: 0,
+
+        moveX: true,
+        moveY: true,
     },
     reducers: {
         setImageUrl: (state, { payload }) => {
             state.imageUrl = payload;
         },
-        setRepeatX: (state, { payload }) => {
-            state.repeatX = payload;
+        setSpeed: (state, { payload }) => {
+            state.speed = payload;
         },
-        setRepeatY: (state, { payload }) => {
-            state.repeatY = payload;
+        setMoveX: (state, { payload }) => {
+            state.moveX = payload;
+        },
+        setMoveY: (state, { payload }) => {
+            state.moveY = payload;
         },
     },
 });
 
-export const { setImageUrl, setRepeatX, setRepeatY } = imageSlice.actions;
+export const { setImageUrl, setSpeed, setMoveX, setMoveY } = imageSlice.actions;
 
 export default imageSlice.reducer;
