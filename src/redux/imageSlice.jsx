@@ -6,8 +6,9 @@ const imageSlice = createSlice({
     name: "image",
     initialState: {
         imageUrl: City,
-        speedX: 1,
-        speedY: 1,
+        speedX: -3,
+        speedY: 0,
+        scale: true,
     },
     reducers: {
         setImageUrl: (state, { payload }) => {
@@ -19,9 +20,12 @@ const imageSlice = createSlice({
         setSpeedY: (state, { payload }) => {
             state.speedY = payload;
         },
+        setScale: (state, { payload }) => {
+            state.scale = payload;
+        },
     },
 });
 
-export const { setImageUrl, setSpeedX, setSpeedY } = imageSlice.actions;
+export const { setImageUrl, setSpeedX, setSpeedY, setScale } = imageSlice.actions;
 
 export default imageSlice.reducer;
