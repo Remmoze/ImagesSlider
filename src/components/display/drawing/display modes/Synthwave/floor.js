@@ -7,7 +7,7 @@ const createGradient = (context, canvas, floorHeight) => {
 };
 
 const drawLines = (context, canvas, offset, { floorHeight, amount, scaleX, scaleY }) => {
-    context.filter = "blur(1px) drop-shadow(1px 1px 3px #BD0477)";
+    context.filter = "blur(1px) drop-shadow(0px 0px 4px #BD0477)";
     context.lineWidth = 3;
     context.beginPath();
     for (let i = 0; i < amount; i++) {

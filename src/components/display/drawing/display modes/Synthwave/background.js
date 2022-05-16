@@ -27,19 +27,33 @@ const getSunGradient = (context, sunBox) => {
         sunBox.y + sunBox.height
     );
     grad.addColorStop(0, "#EC07A8");
-    grad.addColorStop(0.3, "#F683A4");
-    grad.addColorStop(0.5, "#F683A4");
+    grad.addColorStop(0.2, "#F683A4");
+    grad.addColorStop(0.4, "#F683A4");
     grad.addColorStop(0.7, "#FEF9D3");
     grad.addColorStop(1, "#FEF9D3");
     return grad;
 };
 
-const drawSun = (context, canvas, sunBox) => {
-    context.filter = "blur(1px) drop-shadow(1px 1px 3px #F683A4)";
+const drawSun = (context, sunBox) => {
+    context.filter = "blur(3px)";
     context.fillStyle = getSunGradient(context, sunBox);
     context.beginPath();
     context.arc(sunBox.x + sunBox.width / 2, sunBox.y + sunBox.height / 2, sunBox.width / 2, 0, Math.PI * 2);
     context.fill();
+    context.filter = "none";
+};
+
+const drawSunLines = (context, sunBox, frameCount) => {
+    context.filter = "blur(1px)";
+    const maxLineGap = 30;
+    const offset = (frameCount % 100) / 100;
+    const gaps = 20;
+
+    for (let i = 0; i < gaps; i++) {
+        let y = i * maxLineGap - offset * maxLineGap;
+        let height = (y / sunBox.height) ** 2 * maxLineGap;
+        context.fillRect(sunBox.x - 10, sunBox.y + 10 + y, sunBox.width + 20, height);
+    }
     context.filter = "none";
 };
 
@@ -48,7 +62,9 @@ const drawBackground = (context, canvas, store, frameCount) => {
     context.fillStyle = grad;
     context.fillRect(0, 0, canvas.width, canvas.height);
     const sunBox = getSunBox(canvas, store.floorHeight);
-    drawSun(context, canvas, sunBox);
+    drawSun(context, sunBox);
+    context.fillStyle = grad;
+    drawSunLines(context, sunBox, frameCount);
 };
 
 export { drawBackground };
