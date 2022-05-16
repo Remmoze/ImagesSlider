@@ -33,6 +33,20 @@ const getSunGradient = (context, sunBox) => {
     grad.addColorStop(1, "#FEF9D3");
     return grad;
 };
+const getSunHazeGradient = (context, sunBox, alpha = "A0") => {
+    const grad = context.createLinearGradient(
+        sunBox.x + sunBox.width / 2,
+        sunBox.y,
+        sunBox.x + sunBox.width / 2,
+        sunBox.y + sunBox.height
+    );
+    grad.addColorStop(0, "#A9071F" + alpha);
+    grad.addColorStop(0.2, "#C81023" + alpha);
+    grad.addColorStop(0.4, "#CF002F" + alpha);
+    grad.addColorStop(0.7, "#E80358" + alpha);
+    grad.addColorStop(1, "#D2065D" + alpha);
+    return grad;
+};
 
 const drawSun = (context, sunBox) => {
     context.filter = "blur(3px)";
@@ -57,6 +71,18 @@ const drawSunLines = (context, sunBox, frameCount) => {
     context.filter = "none";
 };
 
+const drawSunHaze = (context, sunBox) => {
+    const alpha = "80";
+    context.globalCompositeOperation = "hard-light";
+    context.filter = "blur(100px)";
+    context.fillStyle = getSunHazeGradient(context, sunBox, alpha);
+    context.beginPath();
+    context.arc(sunBox.x + sunBox.width / 2, sunBox.y + sunBox.height / 2, sunBox.width / 2, 0, Math.PI * 2);
+    context.fill();
+    context.filter = "none";
+    context.globalCompositeOperation = "source-over";
+};
+
 const drawBackground = (context, canvas, store, frameCount) => {
     const grad = getBGGradient(context, canvas);
     context.fillStyle = grad;
@@ -65,6 +91,7 @@ const drawBackground = (context, canvas, store, frameCount) => {
     drawSun(context, sunBox);
     context.fillStyle = grad;
     drawSunLines(context, sunBox, frameCount);
+    drawSunHaze(context, sunBox);
 };
 
 export { drawBackground };
