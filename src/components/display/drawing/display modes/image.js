@@ -12,7 +12,7 @@ let offsetY = 0;
 let scalingX = 1;
 let scalingY = 1;
 
-const draw = (context, { speedX, speedY, scale }) => {
+const draw = (context, { speedX, speedY, scale, clampX, clampY }) => {
     context.fillStyle = "black";
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     context.fillStyle = pattern;
@@ -28,12 +28,20 @@ const draw = (context, { speedX, speedY, scale }) => {
 
     if (scale) {
         if (context.canvas.width <= image.width) {
-            scalingX = 1;
+            if (clampX) {
+                scalingX = image.width / context.canvas.width;
+            } else {
+                scalingX = 1;
+            }
         } else {
             scalingX = context.canvas.width / image.width;
         }
         if (context.canvas.height <= image.height) {
-            scalingY = 1;
+            if (clampY) {
+                scalingY = image.height / context.canvas.height;
+            } else {
+                scalingY = 1;
+            }
         } else {
             scalingY = context.canvas.height / image.height;
         }
@@ -48,9 +56,8 @@ const draw = (context, { speedX, speedY, scale }) => {
 };
 
 let prevURL = "";
-const updateImage = (context, { imageUrl, speedX, speedY, scale }) => {
+const updateImage = (context, { imageUrl, ...Storage }) => {
     if (imageUrl !== prevURL) {
-        console.log("was here", imageUrl);
         // code
         image = new Image(); // could be removed?
         image.onload = () => {
@@ -61,7 +68,7 @@ const updateImage = (context, { imageUrl, speedX, speedY, scale }) => {
     }
 
     if (pattern !== null) {
-        draw(context, { speedX, speedY, scale });
+        draw(context, Storage);
     }
 };
 

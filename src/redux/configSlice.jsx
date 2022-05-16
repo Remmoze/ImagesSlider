@@ -4,7 +4,7 @@ const configSlice = createSlice({
     name: "config",
     initialState: {
         debug: false,
-        mode: "Image",
+        mode: "Synthwave",
     },
     reducers: {
         setMode: (state, { payload }) => {

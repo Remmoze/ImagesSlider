@@ -3,6 +3,7 @@ import { createBlinking } from "./display modes/blinking";
 import { createRadial } from "./display modes/radial";
 import { updateDots } from "./display modes/dots";
 import { updateImage } from "./display modes/image";
+import { updateSynth } from "./display modes/synthwave";
 
 const drawDebug = (context, frameCount) => {
     const canvas = context.canvas;
@@ -29,7 +30,7 @@ const drawDefault = (context) => {
     context.fillText("No input", canvas.width / 2, canvas.height / 2);
 };
 
-const createFillStyle = (context, storage, frameCount, image) => {
+const createFillStyle = (context, storage, frameCount) => {
     switch (storage.config.mode) {
         case "Gradient":
             return createGradient(context, storage.gradient, frameCount);
@@ -55,7 +56,8 @@ const getDrawType = (mode) => {
             return "pattern";
         }
 
-        case "Dots": {
+        case "Dots":
+        case "Synthwave": {
             return "update";
         }
 
@@ -65,18 +67,29 @@ const getDrawType = (mode) => {
     }
 };
 
-const drawUpdate = (context, storage, needsUpdate = false) => {
+const drawUpdate = (context, storage, frameCount, needsUpdate = false) => {
     const canvas = context.canvas;
     const type = getDrawType(storage.config.mode);
     if (type === "fillstyle") {
         context.fillRect(0, 0, canvas.width, canvas.height);
     }
-    if (storage.config.mode === "Dots") {
-        updateDots(context, storage.dots, needsUpdate);
-    }
 
-    if (storage.config.mode === "Image") {
-        updateImage(context, storage.image);
+    switch (storage.config.mode) {
+        case "Dots": {
+            updateDots(context, storage.dots, needsUpdate);
+            break;
+        }
+        case "Image": {
+            updateImage(context, storage.image);
+            break;
+        }
+        case "Synthwave": {
+            updateSynth(context, storage.synth, frameCount);
+            break;
+        }
+        default: {
+            break;
+        }
     }
 };
 
@@ -97,7 +110,7 @@ const CanvasUpdate = (context, frameCount, storage, image) => {
             drawUpdate(context, storage);
         }
     } else if (type === "update") {
-        drawUpdate(context, storage, needsUpdate);
+        drawUpdate(context, storage, frameCount, needsUpdate);
     } else if (type === "pattern") {
         drawUpdate(context, storage);
     }

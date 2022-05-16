@@ -3,6 +3,7 @@ import Image from "./Image";
 import Radial from "./Radial";
 import Dots from "./Dots";
 import Blinking from "./Blinking";
+import Synthwave from "./Synthwave";
 
 const Modes = [
     {
@@ -24,6 +25,10 @@ const Modes = [
     {
         name: "Radial",
         component: <Radial />,
+    },
+    {
+        name: "Synthwave",
+        component: <Synthwave />,
     },
 ];
 
