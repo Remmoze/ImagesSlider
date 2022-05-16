@@ -16,16 +16,16 @@ const Synthwave = () => {
             <SettingsSlider
                 defaultValue={synth.floorHeight * 100}
                 label={"Floor height: " + (synth.floorHeight * 100).toFixed(0)}
-                min={1}
-                max={100}
+                min={30}
+                max={85}
                 step={1}
                 onChange={changeFloorHeight}
             />
             <SettingsSlider
                 defaultValue={synth.numberOfLines}
                 label={"Number of lines: " + synth.numberOfLines}
-                min={2}
-                max={100}
+                min={10}
+                max={80}
                 step={1}
                 onChange={(newValue) => dispatch(setNumberOfLines(newValue))}
             />
