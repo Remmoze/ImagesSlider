@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/ScreenSaver/static/js/main.c0c979f4.chunk.js",
-    "main.js.map": "/ScreenSaver/static/js/main.c0c979f4.chunk.js.map",
-    "runtime-main.js": "/ScreenSaver/static/js/runtime-main.bf64a533.js",
-    "runtime-main.js.map": "/ScreenSaver/static/js/runtime-main.bf64a533.js.map",
-    "static/js/2.04ad82ca.chunk.js": "/ScreenSaver/static/js/2.04ad82ca.chunk.js",
-    "static/js/2.04ad82ca.chunk.js.map": "/ScreenSaver/static/js/2.04ad82ca.chunk.js.map",
-    "index.html": "/ScreenSaver/index.html",
-    "static/js/2.04ad82ca.chunk.js.LICENSE.txt": "/ScreenSaver/static/js/2.04ad82ca.chunk.js.LICENSE.txt",
-    "static/media/city.ea63c51b.jpg": "/ScreenSaver/static/media/city.ea63c51b.jpg"
+    "main.js": "/Screen-Saver/static/js/main.c0c979f4.chunk.js",
+    "main.js.map": "/Screen-Saver/static/js/main.c0c979f4.chunk.js.map",
+    "runtime-main.js": "/Screen-Saver/static/js/runtime-main.4aea13bb.js",
+    "runtime-main.js.map": "/Screen-Saver/static/js/runtime-main.4aea13bb.js.map",
+    "static/js/2.04ad82ca.chunk.js": "/Screen-Saver/static/js/2.04ad82ca.chunk.js",
+    "static/js/2.04ad82ca.chunk.js.map": "/Screen-Saver/static/js/2.04ad82ca.chunk.js.map",
+    "index.html": "/Screen-Saver/index.html",
+    "static/js/2.04ad82ca.chunk.js.LICENSE.txt": "/Screen-Saver/static/js/2.04ad82ca.chunk.js.LICENSE.txt",
+    "static/media/city.ea63c51b.jpg": "/Screen-Saver/static/media/city.ea63c51b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.bf64a533.js",
+    "static/js/runtime-main.4aea13bb.js",
     "static/js/2.04ad82ca.chunk.js",
     "static/js/main.c0c979f4.chunk.js"
   ]
