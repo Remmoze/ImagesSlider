@@ -15,6 +15,10 @@ const houses = [
         height: 1,
         components: [[0.25, 0.25, 0.5, 0.75]],
     },
+    {
+        height: 4,
+        components: [[0, 0, 1, 1]],
+    },
 ];
 
 const getHouse = (x, floorHeight, scale, index = 0) => {
@@ -42,11 +46,11 @@ const drawHouse = (context, house, offset) => {
     }
 
     context.strokeStyle = "white";
-    context.beginPath();
-    for (const comp of house) {
-        context.rect(comp.x + offset, comp.y, comp.width, comp.height);
-    }
-    context.stroke();
+    // context.beginPath();
+    // for (const comp of house) {
+    //     context.rect(comp.x + offset, comp.y, comp.width, comp.height);
+    // }
+    // context.stroke();
 };
 
 let housesCache = [];

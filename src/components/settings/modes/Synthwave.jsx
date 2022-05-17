@@ -24,8 +24,8 @@ const Synthwave = () => {
             <SettingsSlider
                 defaultValue={synth.numberOfLines}
                 label={"Number of lines: " + synth.numberOfLines}
-                min={10}
-                max={80}
+                min={20}
+                max={60}
                 step={1}
                 onChange={(newValue) => dispatch(setNumberOfLines(newValue))}
             />

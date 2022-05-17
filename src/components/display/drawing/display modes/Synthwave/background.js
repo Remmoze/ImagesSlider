@@ -64,7 +64,7 @@ const drawSunLines = (context, sunBox, frameCount) => {
     const gaps = 20;
 
     for (let i = 0; i < gaps; i++) {
-        let y = i * maxLineGap - offset * maxLineGap;
+        let y = i * maxLineGap + offset * maxLineGap;
         let height = (y / sunBox.height) ** 2 * maxLineGap;
         context.fillRect(sunBox.x - 10, sunBox.y + 10 + y, sunBox.width + 20, height);
     }
