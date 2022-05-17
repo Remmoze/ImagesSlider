@@ -6,7 +6,7 @@ const updateSynth = (context, store, frameCount) => {
     let args = [context, context.canvas, store, frameCount];
     drawBackground(...args);
     drawHouses(...args);
-    context.globalAlpha = 0.4;
+    context.globalAlpha = 0.9;
     drawFloor(...args);
     context.globalAlpha = 1;
 };

@@ -80,4 +80,4 @@ const loadHouses = () => {
     housesImage.onload = parseHouses;
 };
 
-export { housesImages, housesImage, loadHouses };
+export { housesImages, housesImage, houseBox, loadHouses };

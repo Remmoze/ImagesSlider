@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const synthSlice = createSlice({
     name: "synth",
     initialState: {
-        floorHeight: 2 / 3, // 0..1
-        numberOfLines: 40,
+        floorHeight: 3 / 4, // 0..1
+        numberOfLines: 30,
     },
     reducers: {
         setFloorHeight: (state, { payload }) => {
