@@ -27,11 +27,13 @@ const processCache = (numberOfLines) => {
     oldCount = numberOfLines;
 };
 
-const draw = (context, canvas, scale, floorHeight, offset) => {
+const draw = (context, scale, floorHeight, offset) => {
     let width = scale;
     let height = (houseBox.height / houseBox.width) * width;
     for (let i = 0; i < housesCache.length; i++) {
         let houseIndex = housesCache[i];
+
+        // add empty houses
         if (houseIndex === -1) {
             continue;
         }
@@ -44,20 +46,17 @@ const draw = (context, canvas, scale, floorHeight, offset) => {
             houseBox.height,
             (i - 1) * scale + scale * offset,
             floorHeight - height,
-            width,
+            width + 1,
             height
         );
     }
 };
 
-let oldOffset = null;
+let oldOffset = 0;
 const shouldUpdate = (offset) => {
-    if (oldOffset !== null && Math.abs(oldOffset - offset) > 0.9) {
-        oldOffset = offset;
-        return true;
-    }
+    const update = Math.abs(oldOffset - offset) > 0.9;
     oldOffset = offset;
-    return false;
+    return update;
 };
 
 const drawHouses = (context, canvas, store, frameCount) => {
@@ -79,7 +78,7 @@ const drawHouses = (context, canvas, store, frameCount) => {
         housesCache.unshift(housesCache.pop());
     }
 
-    draw(context, canvas, scale, floorHeight, offset);
+    draw(context, scale, floorHeight, offset);
 };
 
 export { drawHouses };
