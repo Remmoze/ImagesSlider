@@ -1,4 +1,5 @@
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
+import setProperty from "./helper";
 
 const gradientAtom = atom({
     key: "Gradient",
@@ -23,24 +24,21 @@ const useGradientAtom = () => {
     const setSpeed = setProperty(setGradient, "speed");
     const setRotation = setProperty(setGradient, "rotation");
     const setColors = setProperty(setGradient, "colors");
-    const addColor = (color) => {
-        setGradient((state) => {
-            state.colors.push(color);
-            return state;
-        });
-    };
+    const addColor = (color) => setGradient((state) => ({ ...state, colors: [...state.colors, color] }));
 
-    const setColorByIndex = ({ index, color }) => {
+    const setColorByIndex = (index, color) => {
         setGradient((state) => {
-            state.colors[index] = color;
-            return state;
+            const colors = [...state.colors];
+            colors[index] = color;
+            return { ...state, colors };
         });
     };
 
     const deleteColorByIndex = (index) => {
         setGradient((state) => {
-            state.colors.splice(index, 1);
-            return state;
+            const colors = [...state.colors];
+            colors.splice(index, 1);
+            return { ...state, colors };
         });
     };
 

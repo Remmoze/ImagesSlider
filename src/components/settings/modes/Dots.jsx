@@ -1,12 +1,11 @@
-import { useSelector, useDispatch } from "react-redux";
-import { setCount, setShowDots, setSpeed, setMaxDistance, setCurve, setShowGrid } from "../../../redux/dotsSlice";
-
 import SettingsSlider from "../components/settingsSlider";
 import SettingsCheckbox from "../components/settingsCheckbox";
 
+import useDotsAtom from "../../../atoms/dots";
+
 const Dots = () => {
-    const dots = useSelector((storage) => storage.dots);
-    const dispatch = useDispatch();
+    const { dots, setCurve, setSpeed, setCount, setShowDots, setShowGrid, setMaxDistance } = useDotsAtom();
+
     return (
         <>
             <SettingsSlider
@@ -15,7 +14,7 @@ const Dots = () => {
                 min={1}
                 max={50}
                 step={1}
-                onChange={(value) => dispatch(setSpeed(value))}
+                onChange={(value) => setSpeed(value)}
             />
             <SettingsSlider
                 defaultValue={dots.count}
@@ -23,7 +22,7 @@ const Dots = () => {
                 min={0}
                 max={250}
                 step={1}
-                onChange={(value) => dispatch(setCount(value))}
+                onChange={(value) => setCount(value)}
             />
             <SettingsSlider
                 defaultValue={dots.maxDistance}
@@ -31,7 +30,7 @@ const Dots = () => {
                 min={100}
                 max={200}
                 step={1}
-                onChange={(value) => dispatch(setMaxDistance(value))}
+                onChange={(value) => setMaxDistance(value)}
             />
             <SettingsSlider
                 defaultValue={dots.curve}
@@ -39,17 +38,17 @@ const Dots = () => {
                 min={0}
                 max={300}
                 step={1}
-                onChange={(value) => dispatch(setCurve(value))}
+                onChange={(value) => setCurve(value)}
             />
             <SettingsCheckbox
                 defaultValue={dots.showDots}
                 label={"Show Dots"}
-                onChange={(value) => dispatch(setShowDots(value))}
+                onChange={(value) => setShowDots(value)}
             />
             <SettingsCheckbox
                 defaultValue={dots.showGrid}
                 label={"Show Grid"}
-                onChange={(value) => dispatch(setShowGrid(value))}
+                onChange={(value) => setShowGrid(value)}
             />
         </>
     );

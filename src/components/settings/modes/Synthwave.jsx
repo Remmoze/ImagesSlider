@@ -1,15 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setFloorHeight, setNumberOfLines } from "../../../redux/synthSlice";
-
 import SettingsSlider from "../components/settingsSlider";
+import useSynthAtom from "../../../atoms/synth";
 
 const Synthwave = () => {
-    const synth = useSelector((store) => store.synth);
-    const dispatch = useDispatch();
-
-    const changeFloorHeight = (newValue) => {
-        dispatch(setFloorHeight(newValue / 100));
-    };
+    const { synth, setFloorHeight, setNumberOfLines } = useSynthAtom();
 
     return (
         <>
@@ -19,7 +12,7 @@ const Synthwave = () => {
                 min={30}
                 max={85}
                 step={1}
-                onChange={changeFloorHeight}
+                onChange={(newValue) => setFloorHeight(newValue / 100)}
             />
             <SettingsSlider
                 defaultValue={synth.numberOfLines}
@@ -27,7 +20,7 @@ const Synthwave = () => {
                 min={20}
                 max={60}
                 step={1}
-                onChange={(newValue) => dispatch(setNumberOfLines(newValue))}
+                onChange={(newValue) => setNumberOfLines(newValue)}
             />
         </>
     );

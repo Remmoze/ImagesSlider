@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-
-import { useDispatch } from "react-redux";
-import { deleteColorByIndex, setColorByIndex } from "../../../redux/gradientSlice";
-
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { IconButton, TextField } from "@mui/material";
 import { ListItem, ListItemText } from "@mui/material";
 import { Box } from "@mui/system";
+
+import useGradientAtom from "../../../atoms/gradient";
 
 const isColor = (strColor) => {
     const s = new Option().style;
@@ -15,18 +13,18 @@ const isColor = (strColor) => {
     return s.color !== "";
 };
 
-const changeColor = (dispatch, index, color, setError) => {
+const changeColor = (setColorByIndex, index, color, setError) => {
     if (!isColor(color)) {
         setError(true);
         return;
     }
     setError(false);
-    dispatch(setColorByIndex({ index, color }));
+    setColorByIndex(index, color);
 };
 
 const ColorItem = ({ color, index, blockDelete }) => {
+    const { deleteColorByIndex, setColorByIndex } = useGradientAtom();
     const [error, setError] = useState(false);
-    const dispatch = useDispatch();
 
     return (
         <ListItem disablePadding>
@@ -49,19 +47,14 @@ const ColorItem = ({ color, index, blockDelete }) => {
 
             <ListItemText>
                 <TextField
-                    onChange={({ target }) => changeColor(dispatch, index, target.value, setError)}
+                    onChange={({ target }) => changeColor(setColorByIndex, index, target.value, setError)}
                     id="standard-basic"
                     variant="standard"
                     color={error ? "error" : "primary"}
                     defaultValue={color}
                 />
             </ListItemText>
-            <IconButton
-                disabled={blockDelete}
-                onClick={() => {
-                    dispatch(deleteColorByIndex(index));
-                }}
-            >
+            <IconButton disabled={blockDelete} onClick={() => deleteColorByIndex(index)}>
                 <DeleteIcon />
             </IconButton>
         </ListItem>

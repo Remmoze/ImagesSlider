@@ -1,9 +1,6 @@
 import React from "react";
 import { TransitionGroup } from "react-transition-group";
 
-import { useSelector, useDispatch } from "react-redux";
-import { addColor } from "../../../redux/gradientSlice";
-
 import AddIcon from "@mui/icons-material/Add";
 
 import { Grid, IconButton } from "@mui/material";
@@ -11,6 +8,8 @@ import { List, Divider } from "@mui/material";
 import { Collapse } from "@mui/material";
 
 import ColorItem from "./colorItem";
+
+import useGradientAtom from "../../../atoms/gradient";
 
 const RandomColor = () => {
     return (
@@ -22,18 +21,14 @@ const RandomColor = () => {
 };
 
 const ColorsList = () => {
-    const gradient = useSelector((storage) => storage.gradient);
-    const dispatch = useDispatch();
+    const { gradient, addColor } = useGradientAtom();
 
     return (
         <Grid item mt={-1}>
             <Grid container direction="row" alignItems="center">
                 <Grid item>Colors</Grid>
                 <Grid item>
-                    <IconButton
-                        disabled={gradient.colors.length >= 9}
-                        onClick={() => dispatch(addColor(RandomColor()))}
-                    >
+                    <IconButton disabled={gradient.colors.length >= 9} onClick={() => addColor(RandomColor())}>
                         <AddIcon />
                     </IconButton>
                 </Grid>

@@ -1,16 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setSpeed } from "../../../redux/gradientSlice";
-
 import SettingsSlider from "../components/settingsSlider";
 import ColorsList from "../gradient/colorsAdder";
 
-const Radial = () => {
-    const gradient = useSelector((store) => store.gradient);
-    const dispatch = useDispatch();
+import useGradientAtom from "../../../atoms/gradient";
 
-    const changeSpeed = (newValue) => {
-        dispatch(setSpeed(newValue));
-    };
+const Radial = () => {
+    const { gradient, setSpeed } = useGradientAtom();
 
     return (
         <>
@@ -20,7 +14,7 @@ const Radial = () => {
                 min={1}
                 max={100}
                 step={1}
-                onChange={changeSpeed}
+                onChange={setSpeed}
                 color={gradient.speed > 20 ? "auto" : "red"}
             />
             <ColorsList />
