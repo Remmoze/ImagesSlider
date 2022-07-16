@@ -14,7 +14,6 @@ const gradientSlice = createSlice({
             "#4B0082", // Indigo
             "#EE82EE", // Violet
         ],
-        imageUrl: null,
     },
     reducers: {
         /*

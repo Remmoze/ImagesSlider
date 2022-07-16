@@ -8,6 +8,8 @@ import storage from "./redux/store";
 
 import MainContainer from "./components/MainContainer";
 
+import { RecoilRoot } from "recoil";
+
 const theme = createTheme({
     palette: {
         mode: "dark",
@@ -17,15 +19,17 @@ const theme = createTheme({
 
 const App = () => {
     return (
-        <Provider store={storage}>
-            <React.StrictMode>
-                <ThemeProvider theme={theme}>
-                    <CssBaseline />
+        <RecoilRoot>
+            <Provider store={storage}>
+                <React.StrictMode>
+                    <ThemeProvider theme={theme}>
+                        <CssBaseline />
 
-                    <MainContainer />
-                </ThemeProvider>
-            </React.StrictMode>
-        </Provider>
+                        <MainContainer />
+                    </ThemeProvider>
+                </React.StrictMode>
+            </Provider>
+        </RecoilRoot>
     );
 };
 
