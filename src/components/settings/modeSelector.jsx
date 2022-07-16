@@ -1,16 +1,14 @@
 import React from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { setMode } from "../../redux/configSlice";
-
 import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 import Modes from "./modes/modesMenu";
 
+import useConfigAtom from "../../atoms/config";
+
 const Mode = () => {
-    const config = useSelector((storage) => storage.config);
-    const dispatch = useDispatch();
-    const changeMode = ({ target }) => dispatch(setMode(target.value));
+    const { config, setMode } = useConfigAtom();
+    const changeMode = ({ target }) => setMode(target.value);
 
     return (
         <>

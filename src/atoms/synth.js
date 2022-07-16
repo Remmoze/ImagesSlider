@@ -1,6 +1,7 @@
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
+import setProperty from "./helper";
 
-const synth = atom({
+const synthAtom = atom({
     key: "Synth",
     default: {
         floorHeight: 3 / 4, // 0..1
@@ -8,4 +9,17 @@ const synth = atom({
     },
 });
 
-export default synth;
+const useSynthAtom = () => {
+    const [synth, setSynth] = useRecoilState(synthAtom);
+
+    const setFloorHeight = setProperty(setSynth, "floorHeight");
+    const setNumberOfLines = setProperty(setSynth, "numberOfLines");
+
+    return {
+        synth,
+        setFloorHeight,
+        setNumberOfLines,
+    };
+};
+
+export default useSynthAtom;

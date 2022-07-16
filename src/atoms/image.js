@@ -1,8 +1,9 @@
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
+import setProperty from "./helper";
 
 import City from "../content/city.jpg";
 
-const image = atom({
+const imageAtom = atom({
     key: "Image",
     default: {
         imageUrl: City,
@@ -14,4 +15,25 @@ const image = atom({
     },
 });
 
-export default image;
+const useImageAtom = () => {
+    const [image, setImage] = useRecoilState(imageAtom);
+
+    const setImageUrl = setProperty(setImage, "imageUrl");
+    const setSpeedX = setProperty(setImage, "speedX");
+    const setSpeedY = setProperty(setImage, "speedY");
+    const setScale = setProperty(setImage, "scale");
+    const setClampX = setProperty(setImage, "clampX");
+    const setClampY = setProperty(setImage, "clampY");
+
+    return {
+        image,
+        setImageUrl,
+        setSpeedX,
+        setSpeedY,
+        setScale,
+        setClampX,
+        setClampY,
+    };
+};
+
+export default useImageAtom;

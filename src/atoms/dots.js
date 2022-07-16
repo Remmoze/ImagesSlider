@@ -1,15 +1,37 @@
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
+import setProperty from "./helper";
 
-const dots = atom({
+const dotsAtom = atom({
     key: "Dots",
     default: {
+        curve: 0,
         speed: 50,
         count: 100,
-        maxDistance: 120,
         showDots: true,
         showGrid: false,
-        curve: 0,
+        maxDistance: 120,
     },
 });
 
-export default dots;
+const useDotsAtom = () => {
+    const [dots, setDots] = useRecoilState(dotsAtom);
+
+    const setCurve = setProperty(setDots, "curve");
+    const setSpeed = setProperty(setDots, "speed");
+    const setCount = setProperty(setDots, "count");
+    const setShowDots = setProperty(setDots, "showDots");
+    const setShowGrid = setProperty(setDots, "showGrid");
+    const setMaxDistance = setProperty(setDots, "maxDistance");
+
+    return {
+        dots,
+        setCurve,
+        setSpeed,
+        setCount,
+        setShowDots,
+        setShowGrid,
+        setMaxDistance,
+    };
+};
+
+export default useDotsAtom;

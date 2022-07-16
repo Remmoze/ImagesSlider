@@ -1,6 +1,7 @@
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
+import setProperty from "./helper";
 
-const config = atom({
+const configAtom = atom({
     key: "Config",
     default: {
         mode: "Synthwave",
@@ -8,4 +9,17 @@ const config = atom({
     },
 });
 
-export default config;
+const useConfigAtom = () => {
+    const [config, setConfig] = useRecoilState(configAtom);
+
+    const setMode = setProperty(setConfig, "mode");
+    const setDebug = setProperty(setConfig, "debug");
+
+    return {
+        config,
+        setMode,
+        setDebug,
+    };
+};
+
+export default useConfigAtom;
