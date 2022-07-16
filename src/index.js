@@ -3,9 +3,6 @@ import ReactDOM from "react-dom";
 
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
-import { Provider } from "react-redux";
-import storage from "./redux/store";
-
 import MainContainer from "./components/MainContainer";
 
 import { RecoilRoot } from "recoil";
@@ -19,17 +16,15 @@ const theme = createTheme({
 
 const App = () => {
     return (
-        <RecoilRoot>
-            <Provider store={storage}>
-                <React.StrictMode>
-                    <ThemeProvider theme={theme}>
-                        <CssBaseline />
+        <React.StrictMode>
+            <RecoilRoot>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
 
-                        <MainContainer />
-                    </ThemeProvider>
-                </React.StrictMode>
-            </Provider>
-        </RecoilRoot>
+                    <MainContainer />
+                </ThemeProvider>
+            </RecoilRoot>
+        </React.StrictMode>
     );
 };
 

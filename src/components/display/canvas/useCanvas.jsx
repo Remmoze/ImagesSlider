@@ -1,21 +1,30 @@
 import { useRef, useEffect } from "react";
 
-import { useSelector } from "react-redux";
+import useConfigAtom from "../../../atoms/config";
+import useDotsAtom from "../../../atoms/dots";
+import useGradientAtom from "../../../atoms/gradient";
+import useImageAtom from "../../../atoms/image";
+import useSynthAtom from "../../../atoms/synth";
 
 let frameCount = 0;
 const useCanvas = (draw) => {
     const canvasRef = useRef(null);
-    const config = useSelector((storage) => storage.config);
-    const storage = useSelector((storage) => storage);
+
+    const { config } = useConfigAtom();
+    const { dots } = useDotsAtom();
+    const { gradient } = useGradientAtom();
+    const { image } = useImageAtom();
+    const { synth } = useSynthAtom();
 
     useEffect(() => {
+        console.log(Math.random());
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d");
         let animationFrameId;
 
         const render = () => {
             frameCount++;
-            draw(context, frameCount, storage);
+            draw(context, frameCount, { config, dots, gradient, image, synth });
             animationFrameId = window.requestAnimationFrame(render);
         };
         render();
@@ -23,7 +32,7 @@ const useCanvas = (draw) => {
         return () => {
             window.cancelAnimationFrame(animationFrameId);
         };
-    }, [draw, config, storage]);
+    }, [draw, config, dots, gradient, image, synth]);
 
     return canvasRef;
 };
