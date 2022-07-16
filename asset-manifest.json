@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.js": "/Screen-Saver/static/js/main.c0c979f4.chunk.js",
-    "main.js.map": "/Screen-Saver/static/js/main.c0c979f4.chunk.js.map",
+    "main.js": "/Screen-Saver/static/js/main.0905b6a8.chunk.js",
+    "main.js.map": "/Screen-Saver/static/js/main.0905b6a8.chunk.js.map",
     "runtime-main.js": "/Screen-Saver/static/js/runtime-main.4aea13bb.js",
     "runtime-main.js.map": "/Screen-Saver/static/js/runtime-main.4aea13bb.js.map",
-    "static/js/2.04ad82ca.chunk.js": "/Screen-Saver/static/js/2.04ad82ca.chunk.js",
-    "static/js/2.04ad82ca.chunk.js.map": "/Screen-Saver/static/js/2.04ad82ca.chunk.js.map",
+    "static/js/2.6f9e4faf.chunk.js": "/Screen-Saver/static/js/2.6f9e4faf.chunk.js",
+    "static/js/2.6f9e4faf.chunk.js.map": "/Screen-Saver/static/js/2.6f9e4faf.chunk.js.map",
     "index.html": "/Screen-Saver/index.html",
-    "static/js/2.04ad82ca.chunk.js.LICENSE.txt": "/Screen-Saver/static/js/2.04ad82ca.chunk.js.LICENSE.txt",
-    "static/media/city.ea63c51b.jpg": "/Screen-Saver/static/media/city.ea63c51b.jpg"
+    "static/js/2.6f9e4faf.chunk.js.LICENSE.txt": "/Screen-Saver/static/js/2.6f9e4faf.chunk.js.LICENSE.txt",
+    "static/media/city.ea63c51b.jpg": "/Screen-Saver/static/media/city.ea63c51b.jpg",
+    "static/media/house_sample.f6a686d9.png": "/Screen-Saver/static/media/house_sample.f6a686d9.png"
   },
   "entrypoints": [
     "static/js/runtime-main.4aea13bb.js",
-    "static/js/2.04ad82ca.chunk.js",
-    "static/js/main.c0c979f4.chunk.js"
+    "static/js/2.6f9e4faf.chunk.js",
+    "static/js/main.0905b6a8.chunk.js"
   ]
 }
