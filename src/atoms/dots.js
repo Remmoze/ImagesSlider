@@ -1,5 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import setProperty from "./helper";
+import { setProperty, localStorageEffect } from "./helper";
 
 const dotsAtom = atom({
     key: "Dots",
@@ -11,6 +11,7 @@ const dotsAtom = atom({
         showGrid: false,
         maxDistance: 120,
     },
+    effects: [localStorageEffect("Dots")],
 });
 
 const useDotsAtom = () => {

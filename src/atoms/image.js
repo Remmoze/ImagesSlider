@@ -1,5 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import setProperty from "./helper";
+import { setProperty, localStorageEffect } from "./helper";
 
 import City from "../content/city.jpg";
 
@@ -13,6 +13,7 @@ const imageAtom = atom({
         clampX: false,
         clampY: false,
     },
+    effects: [localStorageEffect("Image")],
 });
 
 const useImageAtom = () => {

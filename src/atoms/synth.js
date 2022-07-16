@@ -1,5 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import setProperty from "./helper";
+import { setProperty, localStorageEffect } from "./helper";
 
 const synthAtom = atom({
     key: "Synth",
@@ -7,6 +7,7 @@ const synthAtom = atom({
         floorHeight: 3 / 4, // 0..1
         numberOfLines: 30,
     },
+    effects: [localStorageEffect("Synth")],
 });
 
 const useSynthAtom = () => {

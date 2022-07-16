@@ -1,5 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import setProperty from "./helper";
+import { setProperty, localStorageEffect } from "./helper";
 
 const gradientAtom = atom({
     key: "Gradient",
@@ -16,6 +16,7 @@ const gradientAtom = atom({
             "#EE82EE", // Violet
         ],
     },
+    effects: [localStorageEffect("Gradient")],
 });
 
 const useGradientAtom = () => {

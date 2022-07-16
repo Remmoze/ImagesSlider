@@ -1,19 +1,29 @@
 import React from "react";
 
-import { Grid, Typography } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 import Mode from "./modeSelector";
 
 const SettingsContainer = () => {
+    const reloadSettings = () => {
+        localStorage.clear();
+        window.location.reload();
+        return false;
+    };
+
     return (
         <Grid container spacing={2} sx={{ padding: 2 }}>
-            <Grid container justifyContent="center" item mb={-1}>
-                <Typography gutterBottom variant="h5">
+            <Grid container item direction="row" justifyContent="center" alignItems="center">
+                <Typography gutterBottom variant="h5" mb={0} mr={1}>
                     Settings
                 </Typography>
+                <IconButton pb={5} onClick={reloadSettings}>
+                    <ReplayIcon />
+                </IconButton>
             </Grid>
 
-            <Grid container direction="column" item>
+            <Grid container item direction="column">
                 <Mode />
             </Grid>
         </Grid>

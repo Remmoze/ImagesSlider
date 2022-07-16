@@ -1,5 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import setProperty from "./helper";
+import { setProperty, localStorageEffect } from "./helper";
 
 const configAtom = atom({
     key: "Config",
@@ -7,6 +7,7 @@ const configAtom = atom({
         mode: "Synthwave",
         debug: false,
     },
+    effects: [localStorageEffect("Config")],
 });
 
 const useConfigAtom = () => {
