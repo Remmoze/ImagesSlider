@@ -20,7 +20,6 @@ const App = () => {
             <RecoilRoot>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-
                     <MainContainer />
                 </ThemeProvider>
             </RecoilRoot>
