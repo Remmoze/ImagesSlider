@@ -1,7 +1,7 @@
-import SettingsSlider from "../components/settingsSlider";
-import ColorsList from "../gradient/colorsAdder";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
+import ColorsList from "../../menu/sharedComponents/colorsAdder";
 
-import useGradientAtom from "../../../atoms/gradient";
+import useGradientAtom from "./atom";
 
 const Radial = () => {
     const { gradient, setSpeed } = useGradientAtom();

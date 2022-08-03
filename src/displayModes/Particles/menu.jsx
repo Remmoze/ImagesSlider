@@ -1,9 +1,9 @@
-import SettingsSlider from "../components/settingsSlider";
-import SettingsCheckbox from "../components/settingsCheckbox";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
+import SettingsCheckbox from "../../menu/sharedComponents/settingsCheckbox";
 
-import ImageUpload from "../image/imageUpload";
+import ImageUpload from "../../menu/sharedComponents/imageUpload";
 
-import particlesAtom from "../../../atoms/particles";
+import particlesAtom from "./atom";
 
 const Particles = () => {
     const { particles, setImageUrl, setSpeed, setScale } = particlesAtom();

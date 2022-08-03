@@ -1,7 +1,7 @@
-import ColorsList from "../gradient/colorsAdder";
-import SettingsSlider from "../components/settingsSlider";
+import ColorsList from "../../menu/sharedComponents/colorsAdder";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
 
-import useGradientAtom from "../../../atoms/gradient";
+import useGradientAtom from "./atom";
 
 const Blinking = () => {
     const { gradient, setSpeed } = useGradientAtom();

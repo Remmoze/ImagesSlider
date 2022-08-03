@@ -1,9 +1,9 @@
-import SettingsSlider from "../components/settingsSlider";
-import SettingsCheckbox from "../components/settingsCheckbox";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
+import SettingsCheckbox from "../../menu/sharedComponents/settingsCheckbox";
 
-import ImageUpload from "../image/imageUpload";
+import ImageUpload from "../../menu/sharedComponents/imageUpload";
 
-import useImageAtom from "../../../atoms/image";
+import useImageAtom from "./atom";
 
 const Image = () => {
     const { image, setImageUrl, setSpeedX, setSpeedY, setScale, setClampX, setClampY } = useImageAtom();

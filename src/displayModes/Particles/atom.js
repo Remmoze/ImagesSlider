@@ -1,7 +1,7 @@
 import { atom, useRecoilState } from "recoil";
-import { setProperty, localStorageEffect } from "../atoms/helper";
+import { setProperty, localStorageEffect } from "../../atoms/helper";
 
-import City from "../content/city.jpg";
+import City from "../../content/city.jpg";
 
 const particlesAtom = atom({
     key: "Particles",

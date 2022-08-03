@@ -5,7 +5,8 @@ import { IconButton, TextField } from "@mui/material";
 import { ListItem, ListItemText } from "@mui/material";
 import { Box } from "@mui/system";
 
-import useGradientAtom from "../../../atoms/gradient";
+// make this component not dependent on gradient
+import useGradientAtom from "../../displayModes/Gradient/atom";
 
 const isColor = (strColor) => {
     const s = new Option().style;

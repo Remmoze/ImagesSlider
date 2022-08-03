@@ -1,5 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import { setProperty, localStorageEffect } from "../atoms/helper";
+import { setProperty, localStorageEffect } from "../../atoms/helper";
 
 const radialAtom = atom({
     key: "Radial",

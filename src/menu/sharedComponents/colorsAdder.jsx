@@ -9,7 +9,8 @@ import { Collapse } from "@mui/material";
 
 import ColorItem from "./colorItem";
 
-import useGradientAtom from "../../../atoms/gradient";
+// make this component not dependent on gradient
+import useGradientAtom from "../../displayModes/Gradient/atom";
 
 const RandomColor = () => {
     return (

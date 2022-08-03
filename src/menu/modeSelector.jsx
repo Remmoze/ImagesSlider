@@ -2,7 +2,7 @@ import React from "react";
 
 import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-import Modes from "./modes/modesMenu";
+import Modes from "./modesMenu";
 
 import useConfigAtom from "../atoms/config";
 

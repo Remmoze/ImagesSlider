@@ -1,5 +1,5 @@
-import SettingsSlider from "../components/settingsSlider";
-import useSynthAtom from "../../../atoms/synth";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
+import useSynthAtom from "./atom";
 
 const Synthwave = () => {
     const { synth, setFloorHeight, setNumberOfLines } = useSynthAtom();

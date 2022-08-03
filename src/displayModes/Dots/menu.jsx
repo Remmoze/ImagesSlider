@@ -1,7 +1,7 @@
-import SettingsSlider from "../components/settingsSlider";
-import SettingsCheckbox from "../components/settingsCheckbox";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
+import SettingsCheckbox from "../../menu/sharedComponents/settingsCheckbox";
 
-import useDotsAtom from "../../../atoms/dots";
+import useDotsAtom from "./atom";
 
 const Dots = () => {
     const { dots, setCurve, setSpeed, setCount, setShowDots, setShowGrid, setMaxDistance } = useDotsAtom();

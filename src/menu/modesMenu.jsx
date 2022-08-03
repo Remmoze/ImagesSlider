@@ -1,10 +1,10 @@
-import Gradient from "./Gradient";
-import Image from "./Image";
-import Radial from "./Radial";
-import Dots from "./Dots";
-import Blinking from "./Blinking";
-import Synthwave from "./Synthwave";
-import Particles from "./Particles";
+import Blinking from "../displayModes/Blinking/menu";
+import Dots from "../displayModes/Dots/menu";
+import Gradient from "../displayModes/Gradient/menu";
+import Image from "../displayModes/Image/menu";
+import Particles from "../displayModes/Particles/menu";
+import Radial from "../displayModes/Radial/menu";
+import Synthwave from "../displayModes/Synthwave/menu";
 
 const Modes = [
     {

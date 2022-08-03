@@ -1,7 +1,7 @@
-import ColorsList from "../gradient/colorsAdder";
-import SettingsSlider from "../components/settingsSlider";
+import ColorsList from "../../menu/sharedComponents/colorsAdder";
+import SettingsSlider from "../../menu/sharedComponents/settingsSlider";
 
-import useGradientAtom from "../../../atoms/gradient";
+import useGradientAtom from "./atom";
 
 const getRotationLabel = (angle) => {
     return `${angle.toFixed(2)} rad / ${((angle * 180) / Math.PI).toFixed(2)} degrees`;

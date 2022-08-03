@@ -1,4 +1,4 @@
-import HousesImage from "../../../../../content/house_sample.png";
+import HousesImage from "../../../content/house_sample.png";
 
 let housesImages = null;
 

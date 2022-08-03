@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
-import MainContainer from "./components/MainContainer";
+import MainContainer from "./MainContainer";
 
 import { RecoilRoot } from "recoil";
 
