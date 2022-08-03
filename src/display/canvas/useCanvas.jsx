@@ -13,14 +13,14 @@ let frameCount = 0;
 const useCanvas = (draw) => {
     const canvasRef = useRef(null);
 
-    const config = useConfigAtom();
-    const blinking = useBlinkingAtom();
-    const dots = useDotsAtom();
-    const gradient = useGradientAtom();
-    const image = useImageAtom();
-    const particles = useParticlesAtom();
-    const radial = useRadialAtom();
-    const synth = useSynthAtom();
+    const { config } = useConfigAtom();
+    const { blinking } = useBlinkingAtom();
+    const { dots } = useDotsAtom();
+    const { gradient } = useGradientAtom();
+    const { image } = useImageAtom();
+    const { particles } = useParticlesAtom();
+    const { radial } = useRadialAtom();
+    const { synth } = useSynthAtom();
 
     useEffect(() => {
         const canvas = canvasRef.current;
