@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, IconButton, Typography } from "@mui/material";
+import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 
 import Mode from "./modeSelector";
@@ -15,9 +15,11 @@ const SettingsContainer = () => {
                 <Typography gutterBottom variant="h5" mb={0} mr={1}>
                     Settings
                 </Typography>
-                <IconButton pb={5} onClick={resetStates}>
-                    <ReplayIcon />
-                </IconButton>
+                <Tooltip title="Reset Settings" placement="right" arrow>
+                    <IconButton pb={5} onClick={resetStates}>
+                        <ReplayIcon />
+                    </IconButton>
+                </Tooltip>
             </Grid>
 
             <Grid container item direction="column">
