@@ -42,9 +42,9 @@ const createFillStyle = (context, storage, frameCount) => {
         case "Gradient":
             return createGradient(context, storage.gradient, frameCount);
         case "Blinking":
-            return createBlinking(context, storage.gradient, frameCount);
+            return createBlinking(context, storage.blinking, frameCount);
         case "Radial":
-            return createRadial(context, storage.gradient, frameCount);
+            return createRadial(context, storage.radial, frameCount);
         default: {
             return null;
         }

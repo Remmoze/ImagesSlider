@@ -1,28 +1,15 @@
-const getRealRadius = (canvas) => {
-    return Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2;
-};
+const getRealRadius = (canvas) => Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2;
 
-const getColorStopWidth = (radius, colors) => {
-    return (radius * 2) / colors.length;
-};
+const getColorStopWidth = (radius, colors) => (radius * 2) / colors.length;
 
-const getRadius = (canvas, colors, mode) => {
+const getRadius = (canvas, colors) => {
     //circumscribed circle around canvas rectangle
     let realRadius = getRealRadius(canvas);
 
     //how much space one color takes up
     let colorStopWidth = getColorStopWidth(realRadius, colors);
 
-    let radius = 0;
-    if (mode === "Blinking") {
-        // set circumscribed circle's radius to a color stop
-        radius = realRadius * colorStopWidth;
-    } else if (mode === "Gradient" || mode === "Radial") {
-        //increase circumscribed circle's radius by a color stop
-        radius = realRadius + colorStopWidth;
-    }
-
-    return radius;
+    return realRadius + colorStopWidth;
 };
 
 const getLinearGradient = (context, rotation, radius) => {
@@ -35,6 +22,7 @@ const getLinearGradient = (context, rotation, radius) => {
 
     return context.createLinearGradient(x1, y1, x2, y2);
 };
+
 const getSpeed = (frameCount, speed) => (frameCount / speed) * 1.5;
 
 const addColorStops = (gradient, speed, colors) => {
@@ -46,15 +34,15 @@ const addColorStops = (gradient, speed, colors) => {
 };
 
 const createGradientType = (context, storeGradient, frameCount, mode) => {
-    let canvas = context.canvas;
-    const radius = getRadius(canvas, storeGradient.colors, mode);
+    const canvas = context.canvas;
+    const radius = getRadius(canvas, storeGradient.colors);
     const gradient = getLinearGradient(context, storeGradient.rotation, radius);
-    let speed = getSpeed(frameCount, storeGradient.speed);
+    const speed = getSpeed(frameCount, storeGradient.speed);
 
     return addColorStops(gradient, speed, storeGradient.colors);
 };
 
-export { createGradientType, addColorStops, getSpeed, getRadius };
+export { createGradientType, addColorStops, getSpeed, getRadius, getRealRadius, getColorStopWidth };
 
 /* ------------------------------ */
 

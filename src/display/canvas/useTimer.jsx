@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 const useTimer = (callback) => {
-    const requestRef = React.useRef();
-    const previousTimeRef = React.useRef();
+    const requestRef = useRef();
+    const previousTimeRef = useRef();
 
     useEffect(() => {
         const animate = (time) => {
