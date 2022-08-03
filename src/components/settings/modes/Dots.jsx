@@ -9,7 +9,7 @@ const Dots = () => {
     return (
         <>
             <SettingsSlider
-                defaultValue={dots.speed}
+                value={dots.speed}
                 label={"Speed - " + dots.speed + " pixels/s"}
                 min={1}
                 max={50}
@@ -17,7 +17,7 @@ const Dots = () => {
                 onChange={(value) => setSpeed(value)}
             />
             <SettingsSlider
-                defaultValue={dots.count}
+                value={dots.count}
                 label={"Count - " + dots.count}
                 min={0}
                 max={250}
@@ -25,7 +25,7 @@ const Dots = () => {
                 onChange={(value) => setCount(value)}
             />
             <SettingsSlider
-                defaultValue={dots.maxDistance}
+                value={dots.maxDistance}
                 label={"Max distance - " + dots.maxDistance + " pixels"}
                 min={100}
                 max={200}
@@ -33,23 +33,15 @@ const Dots = () => {
                 onChange={(value) => setMaxDistance(value)}
             />
             <SettingsSlider
-                defaultValue={dots.curve}
+                value={dots.curve}
                 label={"Curvature"}
                 min={0}
                 max={300}
                 step={1}
                 onChange={(value) => setCurve(value)}
             />
-            <SettingsCheckbox
-                defaultValue={dots.showDots}
-                label={"Show Dots"}
-                onChange={(value) => setShowDots(value)}
-            />
-            <SettingsCheckbox
-                defaultValue={dots.showGrid}
-                label={"Show Grid"}
-                onChange={(value) => setShowGrid(value)}
-            />
+            <SettingsCheckbox value={dots.showDots} label={"Show Dots"} onChange={(value) => setShowDots(value)} />
+            <SettingsCheckbox value={dots.showGrid} label={"Show Grid"} onChange={(value) => setShowGrid(value)} />
         </>
     );
 };

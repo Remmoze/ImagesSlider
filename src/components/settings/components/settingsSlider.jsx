@@ -2,15 +2,15 @@ import React from "react";
 
 import { Grid, Slider } from "@mui/material";
 
-const SettingsSlider = ({ defaultValue, label, onChange, min, max, step, color }) => {
+const SettingsSlider = ({ value, label, onChange, min, max, step, color }) => {
     return (
         <>
             <Grid item>{label}</Grid>
             <Grid item>
                 <Slider
                     sx={{ color }}
-                    onChange={(e, value) => onChange(value)}
-                    value={defaultValue}
+                    onChange={(_, value) => onChange(value)}
+                    value={value}
                     min={min}
                     max={max}
                     step={step}

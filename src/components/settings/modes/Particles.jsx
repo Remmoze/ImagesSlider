@@ -11,18 +11,14 @@ const Particles = () => {
     return (
         <>
             <SettingsSlider
-                defaultValue={particles.speed}
+                value={particles.speed}
                 label={"SpeedX " + particles.speed}
                 min={-10}
                 max={10}
                 step={1}
                 onChange={(value) => setSpeed(value)}
             />
-            <SettingsCheckbox
-                defaultValue={particles.scale}
-                label={"Scale to fit"}
-                onChange={(value) => setScale(value)}
-            />
+            <SettingsCheckbox value={particles.scale} label={"Scale to fit"} onChange={(value) => setScale(value)} />
             <ImageUpload onChange={(newUrl) => setImageUrl(newUrl)} />
         </>
     );

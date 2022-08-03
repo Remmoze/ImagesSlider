@@ -13,7 +13,7 @@ const Gradient = () => {
     return (
         <>
             <SettingsSlider
-                defaultValue={gradient.speed}
+                value={gradient.speed}
                 label={"Speed"}
                 min={1}
                 max={100}
@@ -22,7 +22,7 @@ const Gradient = () => {
                 color={gradient.speed > 20 ? "auto" : "red"}
             />
             <SettingsSlider
-                defaultValue={gradient.rotation}
+                value={gradient.rotation}
                 label={"Rotation - " + getRotationLabel(gradient.rotation)}
                 min={0}
                 max={Math.PI * 2}

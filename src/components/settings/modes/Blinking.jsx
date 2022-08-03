@@ -8,7 +8,7 @@ const Blinking = () => {
     return (
         <>
             <SettingsSlider
-                defaultValue={gradient.speed}
+                value={gradient.speed}
                 label={"Speed"}
                 min={1}
                 max={100}
