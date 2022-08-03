@@ -4,7 +4,7 @@ import { Grid, IconButton, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 
 import Mode from "./modeSelector";
-import { useResetAllAtoms } from "../../atoms/helper";
+import { useResetAllAtoms } from "../atoms/helper";
 
 const SettingsContainer = () => {
     const resetStates = useResetAllAtoms();

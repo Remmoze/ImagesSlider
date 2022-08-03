@@ -4,7 +4,7 @@ import { Grid, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 import Modes from "./modes/modesMenu";
 
-import useConfigAtom from "../../atoms/config";
+import useConfigAtom from "../atoms/config";
 
 const Mode = () => {
     const { config, setMode } = useConfigAtom();
