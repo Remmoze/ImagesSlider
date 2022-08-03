@@ -1,6 +1,5 @@
 import { atom, useRecoilState } from "recoil";
-import { setProperty } from "./helper";
-import { localStorageEffect } from "./helper2";
+import { setProperty, localStorageEffect } from "../atoms/helper";
 
 import City from "../content/city.jpg";
 
