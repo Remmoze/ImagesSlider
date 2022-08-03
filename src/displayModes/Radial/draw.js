@@ -12,13 +12,18 @@ const getRadialGradient = (context, radius) => {
     );
 };
 
-const createRadial = (context, radial, colors, frameCount) => {
+const createRadial = (context, storage, frameCount) => {
     const canvas = context.canvas;
-    const radius = getRadius(canvas, colors, "Radial");
+    const radius = getRadius(canvas, storage.colors, "Radial");
     const gradient = getRadialGradient(context, radius);
-    const speed = getSpeed(frameCount, radial.speed);
+    const speed = getSpeed(frameCount, storage.radial.speed);
 
-    return addColorStops(gradient, speed, colors);
+    return addColorStops(gradient, speed, storage.colors);
 };
 
-export { createRadial };
+const updateRadial = (context, storage, frameCount) => {
+    context.fillStyle = createRadial(context, storage, frameCount);
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+};
+
+export { updateRadial };

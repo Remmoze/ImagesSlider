@@ -117,7 +117,8 @@ const updateProperties = (context, dots, needsUpdate) => {
     }
 };
 
-const updateDots = (context, dots, needsUpdate) => {
+const updateDots = (context, storage, frameCount, needsUpdate) => {
+    const dots = storage.dots;
     updateProperties(context, dots, needsUpdate);
 
     context.fillStyle = "#000";

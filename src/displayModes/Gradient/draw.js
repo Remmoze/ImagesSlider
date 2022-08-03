@@ -12,13 +12,18 @@ const getLinearGradient = (context, rotation, radius) => {
 };
 
 //fix: Transition between colors is flickering when there are only few colors
-const createGradient = (context, storeGradient, colors, frameCount) => {
+const createGradient = (context, storage, frameCount) => {
     const canvas = context.canvas;
-    const radius = getRadius(canvas, colors);
-    const gradient = getLinearGradient(context, storeGradient.rotation, radius);
-    const speed = getSpeed(frameCount, storeGradient.speed);
+    const radius = getRadius(canvas, storage.colors);
+    const gradient = getLinearGradient(context, storage.gradient.rotation, radius);
+    const speed = getSpeed(frameCount, storage.gradient.speed);
 
-    return addColorStops(gradient, speed, colors);
+    return addColorStops(gradient, speed, storage.colors);
 };
 
-export { createGradient };
+const updateGradient = (context, storage, frameCount) => {
+    context.fillStyle = createGradient(context, storage, frameCount);
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+};
+
+export { updateGradient };

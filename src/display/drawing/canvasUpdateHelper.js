@@ -23,4 +23,25 @@ const drawDefault = (context) => {
     context.fillText("No input", canvas.width / 2, canvas.height / 2);
 };
 
-export { drawDebug, drawDefault };
+let prevMode = "";
+let prevDimensions = { width: 0, height: 0 };
+const needsUpdate = (context, mode) => {
+    const canvas = context.canvas;
+
+    if (prevMode !== mode) {
+        prevMode = mode;
+        // this is absolutely retarded, but without this code, drawing slows down to 10fps
+        let temp = canvas.width;
+        canvas.width = 0;
+        canvas.width = temp;
+    }
+
+    let update = canvas.width !== prevDimensions.width || canvas.height !== prevDimensions.height;
+    if (update) {
+        prevDimensions.width = canvas.width;
+        prevDimensions.height = canvas.height;
+    }
+    return update;
+};
+
+export { drawDebug, drawDefault, needsUpdate };

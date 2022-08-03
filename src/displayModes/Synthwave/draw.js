@@ -2,8 +2,8 @@ import { drawFloor } from "./helpers/floor";
 import { drawBackground } from "./helpers/background";
 import { drawHouses } from "./helpers/houses";
 
-const updateSynth = (context, store, frameCount) => {
-    let args = [context, context.canvas, store, frameCount];
+const updateSynthwave = (context, storage, frameCount) => {
+    let args = [context, context.canvas, storage.synth, frameCount];
     drawBackground(...args);
     drawHouses(...args);
     context.globalAlpha = 0.9;
@@ -11,4 +11,4 @@ const updateSynth = (context, store, frameCount) => {
     context.globalAlpha = 1;
 };
 
-export { updateSynth };
+export { updateSynthwave };

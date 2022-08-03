@@ -56,7 +56,8 @@ const draw = (context, { speedX, speedY, scale, clampX, clampY }) => {
 };
 
 let prevURL = "";
-const updateImage = (context, { imageUrl, ...Storage }) => {
+const updateImage = (context, storage) => {
+    const { imageUrl, ...args } = storage.image;
     if (imageUrl !== prevURL) {
         // code
         image = new Image(); // could be removed?
@@ -68,7 +69,7 @@ const updateImage = (context, { imageUrl, ...Storage }) => {
     }
 
     if (pattern !== null) {
-        draw(context, Storage);
+        draw(context, args);
     }
 };
 
