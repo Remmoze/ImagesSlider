@@ -1,5 +1,6 @@
 import { atom, useRecoilState } from "recoil";
-import { setProperty, localStorageEffect } from "./helper";
+import { setProperty } from "./helper";
+import { localStorageEffect } from "./helper2";
 
 const configAtom = atom({
     key: "Config",

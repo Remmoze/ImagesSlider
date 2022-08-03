@@ -17,7 +17,6 @@ const useCanvas = (draw) => {
     const { synth } = useSynthAtom();
 
     useEffect(() => {
-        console.log(Math.random());
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d");
         let animationFrameId;

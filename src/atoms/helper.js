@@ -1,20 +1,29 @@
+import { useResetRecoilState } from "recoil";
+import { dotsAtom } from "./dots";
+import { gradientAtom } from "./gradient";
+import { imageAtom } from "./image";
+import { synthAtom } from "./synth";
+
 const setProperty = (setter, key) => {
     return (value) => {
         setter((state) => ({ ...state, [key]: value }));
     };
 };
 
-const localStorageEffect =
-    (key) =>
-    ({ setSelf, onSet }) => {
-        const savedValue = localStorage.getItem(key);
-        if (savedValue !== null) {
-            setSelf(JSON.parse(savedValue));
-        }
+const useResetAllAtoms = () => {
+    const resetDots = useResetRecoilState(dotsAtom);
+    const resetGradient = useResetRecoilState(gradientAtom);
+    const resetImage = useResetRecoilState(imageAtom);
+    const resetSynth = useResetRecoilState(synthAtom);
 
-        onSet((newValue, _, isReset) => {
-            isReset ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify(newValue));
-        });
+    const resetAll = () => {
+        resetDots();
+        resetGradient();
+        resetImage();
+        resetSynth();
     };
 
-export { setProperty, localStorageEffect };
+    return resetAll;
+};
+
+export { setProperty, useResetAllAtoms };

@@ -1,5 +1,6 @@
 import { atom, useRecoilState } from "recoil";
-import { setProperty, localStorageEffect } from "./helper";
+import { localStorageEffect } from "./helper2";
+import { setProperty } from "./helper";
 
 const dotsAtom = atom({
     key: "Dots",
@@ -35,4 +36,5 @@ const useDotsAtom = () => {
     };
 };
 
+export { dotsAtom };
 export default useDotsAtom;

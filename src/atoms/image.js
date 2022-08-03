@@ -1,5 +1,6 @@
 import { atom, useRecoilState } from "recoil";
-import { setProperty, localStorageEffect } from "./helper";
+import { setProperty } from "./helper";
+import { localStorageEffect } from "./helper2";
 
 import City from "../content/city.jpg";
 
@@ -37,4 +38,5 @@ const useImageAtom = () => {
     };
 };
 
+export { imageAtom };
 export default useImageAtom;

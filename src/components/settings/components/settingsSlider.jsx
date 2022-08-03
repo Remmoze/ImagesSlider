@@ -1,24 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Grid, Slider } from "@mui/material";
 
 const SettingsSlider = ({ defaultValue, label, onChange, min, max, step, color }) => {
-    const [value, setValue] = useState(defaultValue);
     return (
         <>
             <Grid item>{label}</Grid>
             <Grid item>
                 <Slider
                     sx={{ color }}
-                    onChange={(e, value) => {
-                        setValue(value);
-                        onChange(value);
-                    }}
-                    defaultValue={value}
+                    onChange={(e, value) => onChange(value)}
+                    value={defaultValue}
                     min={min}
                     max={max}
                     step={step}
-                    value={value}
                     valueLabelDisplay="off"
                 />
             </Grid>

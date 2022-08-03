@@ -4,13 +4,10 @@ import { Grid, IconButton, Typography } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 
 import Mode from "./modeSelector";
+import { useResetAllAtoms } from "../../atoms/helper";
 
 const SettingsContainer = () => {
-    const reloadSettings = () => {
-        localStorage.clear();
-        window.location.reload();
-        return false;
-    };
+    const resetStates = useResetAllAtoms();
 
     return (
         <Grid container spacing={2} sx={{ padding: 2 }}>
@@ -18,7 +15,7 @@ const SettingsContainer = () => {
                 <Typography gutterBottom variant="h5" mb={0} mr={1}>
                     Settings
                 </Typography>
-                <IconButton pb={5} onClick={reloadSettings}>
+                <IconButton pb={5} onClick={resetStates}>
                     <ReplayIcon />
                 </IconButton>
             </Grid>
