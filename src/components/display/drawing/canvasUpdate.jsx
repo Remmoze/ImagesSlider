@@ -4,6 +4,7 @@ import { createRadial } from "./display modes/radial";
 import { updateDots } from "./display modes/dots";
 import { updateImage } from "./display modes/image";
 import { updateSynth } from "./display modes/synthwave";
+import { updateParticles } from "./display modes/particles";
 
 const drawDebug = (context, frameCount) => {
     const canvas = context.canvas;
@@ -57,7 +58,8 @@ const getDrawType = (mode) => {
         }
 
         case "Dots":
-        case "Synthwave": {
+        case "Synthwave":
+        case "Particles": {
             return "update";
         }
 
@@ -85,6 +87,10 @@ const drawUpdate = (context, storage, frameCount, needsUpdate = false) => {
         }
         case "Synthwave": {
             updateSynth(context, storage.synth, frameCount);
+            break;
+        }
+        case "Particles": {
+            updateParticles(context, storage.particles);
             break;
         }
         default: {

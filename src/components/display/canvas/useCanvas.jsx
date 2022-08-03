@@ -4,6 +4,7 @@ import useConfigAtom from "../../../atoms/config";
 import useDotsAtom from "../../../atoms/dots";
 import useGradientAtom from "../../../atoms/gradient";
 import useImageAtom from "../../../atoms/image";
+import useParticlesAtom from "../../../atoms/particles";
 import useSynthAtom from "../../../atoms/synth";
 
 let frameCount = 0;
@@ -15,6 +16,7 @@ const useCanvas = (draw) => {
     const { gradient } = useGradientAtom();
     const { image } = useImageAtom();
     const { synth } = useSynthAtom();
+    const { particles } = useParticlesAtom();
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -23,7 +25,7 @@ const useCanvas = (draw) => {
 
         const render = () => {
             frameCount++;
-            draw(context, frameCount, { config, dots, gradient, image, synth });
+            draw(context, frameCount, { config, dots, gradient, image, synth, particles });
             animationFrameId = window.requestAnimationFrame(render);
         };
         render();
