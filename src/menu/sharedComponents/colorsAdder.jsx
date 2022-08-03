@@ -10,7 +10,7 @@ import { Collapse } from "@mui/material";
 import ColorItem from "./colorItem";
 
 // make this component not dependent on gradient
-import useGradientAtom from "../../displayModes/Gradient/atom";
+import useColorsAtom from "../../atoms/colors";
 
 const RandomColor = () => {
     return (
@@ -22,24 +22,24 @@ const RandomColor = () => {
 };
 
 const ColorsList = () => {
-    const { gradient, addColor } = useGradientAtom();
+    const { colors, addColor } = useColorsAtom();
 
     return (
         <Grid item mt={-1}>
             <Grid container direction="row" alignItems="center">
                 <Grid item>Colors</Grid>
                 <Grid item>
-                    <IconButton disabled={gradient.colors.length >= 9} onClick={() => addColor(RandomColor())}>
+                    <IconButton disabled={colors.length >= 9} onClick={() => addColor(RandomColor())}>
                         <AddIcon />
                     </IconButton>
                 </Grid>
             </Grid>
             <List sx={{ width: "100%", bgcolor: "#00000050", borderRadius: 3 }}>
                 <TransitionGroup>
-                    {gradient.colors.map((color, index) => (
+                    {colors.map((color, index) => (
                         <Collapse key={color}>
                             {index !== 0 && <Divider />}
-                            <ColorItem blockDelete={gradient.colors.length < 2} color={color} index={index}></ColorItem>
+                            <ColorItem blockDelete={colors.length < 2} color={color} index={index}></ColorItem>
                         </Collapse>
                     ))}
                 </TransitionGroup>

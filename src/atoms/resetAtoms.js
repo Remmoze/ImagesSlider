@@ -7,6 +7,7 @@ import { imageAtom } from "../displayModes/Image/atom";
 import { particlesAtom } from "../displayModes/Particles/atom";
 import { radialAtom } from "../displayModes/Radial/atom";
 import { synthAtom } from "../displayModes/Synthwave/atom";
+import { colorsAtom } from "./colors";
 
 const useResetAllAtoms = () => {
     const resetBlinking = useResetRecoilState(blinkingAtom);
@@ -17,6 +18,8 @@ const useResetAllAtoms = () => {
     const resetRadial = useResetRecoilState(radialAtom);
     const resetSynth = useResetRecoilState(synthAtom);
 
+    const resetColors = useResetRecoilState(colorsAtom);
+
     const resetAll = () => {
         resetBlinking();
         resetDots();
@@ -25,6 +28,7 @@ const useResetAllAtoms = () => {
         resetParticles();
         resetRadial();
         resetSynth();
+        resetColors();
     };
 
     return resetAll;

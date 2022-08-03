@@ -40,11 +40,11 @@ const drawDefault = (context) => {
 const createFillStyle = (context, storage, frameCount) => {
     switch (storage.config.mode) {
         case "Gradient":
-            return createGradient(context, storage.gradient, frameCount);
+            return createGradient(context, storage.gradient, storage.colors, frameCount);
         case "Blinking":
-            return createBlinking(context, storage.blinking, frameCount);
+            return createBlinking(context, storage.blinking, storage.colors, frameCount);
         case "Radial":
-            return createRadial(context, storage.radial, frameCount);
+            return createRadial(context, storage.radial, storage.colors, frameCount);
         default: {
             return null;
         }

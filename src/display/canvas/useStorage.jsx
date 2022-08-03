@@ -1,4 +1,5 @@
 import useConfigAtom from "../../atoms/config";
+import useColorsAtom from "../../atoms/colors";
 import useBlinkingAtom from "../../displayModes/Blinking/atom";
 import useDotsAtom from "../../displayModes/Dots/atom";
 import useGradientAtom from "../../displayModes/Gradient/atom";
@@ -9,6 +10,8 @@ import useSynthAtom from "../../displayModes/Synthwave/atom";
 
 const useStorage = () => {
     const { config } = useConfigAtom();
+    const { colors } = useColorsAtom();
+
     const { blinking } = useBlinkingAtom();
     const { dots } = useDotsAtom();
     const { gradient } = useGradientAtom();
@@ -17,7 +20,7 @@ const useStorage = () => {
     const { radial } = useRadialAtom();
     const { synth } = useSynthAtom();
 
-    return { config, blinking, dots, gradient, image, particles, radial, synth };
+    return { config, colors, blinking, dots, gradient, image, particles, radial, synth };
 };
 
 export default useStorage;

@@ -15,17 +15,17 @@ const getGradient = (context, radius) => {
     return context.createLinearGradient(x1, y1, x2, y2);
 };
 
-const createBlinkingGradient = (context, blinking, framecount) => {
+const createBlinkingGradient = (context, blinking, colors, framecount) => {
     const canvas = context.canvas;
-    const radius = getRadius(canvas, blinking.colors);
+    const radius = getRadius(canvas, colors);
     const gradient = getGradient(context, radius);
     const speed = getSpeed(framecount, blinking.speed);
 
-    return addColorStops(gradient, speed, blinking.colors);
+    return addColorStops(gradient, speed, colors);
 };
 
-const createBlinking = (context, storeBlinking, frameCount) => {
-    return createBlinkingGradient(context, storeBlinking, frameCount, "Blinking");
+const createBlinking = (context, storeBlinking, colors, frameCount) => {
+    return createBlinkingGradient(context, storeBlinking, colors, frameCount, "Blinking");
 };
 
 export { createBlinking };

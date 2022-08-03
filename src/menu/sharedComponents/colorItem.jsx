@@ -6,7 +6,7 @@ import { ListItem, ListItemText } from "@mui/material";
 import { Box } from "@mui/system";
 
 // make this component not dependent on gradient
-import useGradientAtom from "../../displayModes/Gradient/atom";
+import useColorsAtom from "../../atoms/colors";
 
 const isColor = (strColor) => {
     const s = new Option().style;
@@ -24,7 +24,7 @@ const changeColor = (setColorByIndex, index, color, setError) => {
 };
 
 const ColorItem = ({ color, index, blockDelete }) => {
-    const { deleteColorByIndex, setColorByIndex } = useGradientAtom();
+    const { deleteColorByIndex, setColorByIndex } = useColorsAtom();
     const [error, setError] = useState(false);
 
     return (
