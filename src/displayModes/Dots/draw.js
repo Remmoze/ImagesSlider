@@ -1,5 +1,5 @@
-import { createDot } from "./Dots/Dot";
-import Grid from "./Dots/Grid";
+import { createDot } from "./helpers/Dot";
+import Grid from "./helpers/Grid";
 
 let Dots = [];
 let grid = null;

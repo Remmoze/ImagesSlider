@@ -1,6 +1,6 @@
-import { drawFloor } from "./Synthwave/floor";
-import { drawBackground } from "./Synthwave/background";
-import { drawHouses } from "./Synthwave/houses";
+import { drawFloor } from "./helpers/floor";
+import { drawBackground } from "./helpers/background";
+import { drawHouses } from "./helpers/houses";
 
 const updateSynth = (context, store, frameCount) => {
     let args = [context, context.canvas, store, frameCount];

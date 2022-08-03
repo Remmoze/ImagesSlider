@@ -1,4 +1,4 @@
-import { getRadius, addColorStops, getSpeed } from "../GradientFactory";
+import { getRadius, addColorStops, getSpeed } from "../../display/drawing/GradientFactory";
 
 const getRadialGradient = (context, radius) => {
     let canvas = context.canvas;

@@ -1,10 +1,16 @@
-import { createGradient } from "./display modes/gradient";
-import { createBlinking } from "./display modes/blinking";
-import { createRadial } from "./display modes/radial";
-import { updateDots } from "./display modes/dots";
-import { updateImage } from "./display modes/image";
-import { updateSynth } from "./display modes/synthwave";
-import { updateParticles } from "./display modes/particles";
+import { createBlinking } from "../../displayModes/Blinking/draw";
+import { updateDots } from "../../displayModes/Dots/draw";
+import { createGradient } from "../../displayModes/Gradient/draw";
+import { updateImage } from "../../displayModes/Image/draw";
+import { updateParticles } from "../../displayModes/Particles/draw";
+import { createRadial } from "../../displayModes/Radial/draw";
+import { updateSynth } from "../../displayModes/Synthwave/draw";
+
+/*
+
+    Refactor this so each component has it's own way to draw content.
+
+*/
 
 const drawDebug = (context, frameCount) => {
     const canvas = context.canvas;
