@@ -108,17 +108,18 @@ const drawUpdate = (context, storage, frameCount, needsUpdate = false) => {
 let prevMode = "";
 let prevDimensions = { width: 0, height: 0 };
 const CanvasUpdate = (context, frameCount, storage) => {
+    const canvas = context.canvas;
     if (prevMode !== storage.config.mode) {
         prevMode = storage.config.mode;
         // this is absolutely retarded, but without this code, drawing slows down to 10fps
-        let temp = context.canvas.width;
-        context.canvas.width = 0;
-        context.canvas.width = temp;
+        let temp = canvas.width;
+        canvas.width = 0;
+        canvas.width = temp;
     }
-    let needsUpdate = context.canvas.width !== prevDimensions.width || context.canvas.height !== prevDimensions.height;
+    let needsUpdate = canvas.width !== prevDimensions.width || canvas.height !== prevDimensions.height;
     if (needsUpdate) {
-        prevDimensions.width = context.canvas.width;
-        prevDimensions.height = context.canvas.height;
+        prevDimensions.width = canvas.width;
+        prevDimensions.height = canvas.height;
     }
 
     drawDefault(context);
