@@ -4,6 +4,7 @@ import Radial from "./Radial";
 import Dots from "./Dots";
 import Blinking from "./Blinking";
 import Synthwave from "./Synthwave";
+import Particles from "./Particles";
 
 const Modes = [
     {
@@ -29,6 +30,10 @@ const Modes = [
     {
         name: "Synthwave",
         component: <Synthwave />,
+    },
+    {
+        name: "Particles",
+        component: <Particles />,
     },
 ];
 
